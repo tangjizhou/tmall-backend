@@ -2,9 +2,13 @@ package net.mshome.twisted.tmall.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.mshome.twisted.tmall.enumeration.UserStateEnum;
 
 /**
  * <p>
@@ -17,6 +21,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Builder
+@AllArgsConstructor
 public class User implements Serializable {
 
     private static final long serialVersionUID=1L;
@@ -28,9 +34,9 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * 0:无效,1:有效,9:冻结
+     * 0:无效,1:有效,9:锁定
      */
-    private Integer state;
+    private UserStateEnum state;
 
     private String realName;
 
