@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall;
+package net.mshome.twisted.tmall.generator;
 
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import org.junit.Test;
