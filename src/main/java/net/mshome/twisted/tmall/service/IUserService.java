@@ -1,5 +1,6 @@
 package net.mshome.twisted.tmall.service;
 
+import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+    void register(UserAddDTO userAddDTO);
 }
