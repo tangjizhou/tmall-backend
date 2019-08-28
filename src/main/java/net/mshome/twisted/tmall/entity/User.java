@@ -3,6 +3,8 @@ package net.mshome.twisted.tmall.entity;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
@@ -24,7 +26,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 public class User implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
@@ -41,8 +43,10 @@ public class User implements Serializable {
 
     private String address;
 
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
 

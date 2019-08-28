@@ -28,6 +28,7 @@ public class MybatisPlusGenerator {
             strategyConfig.setEntityBuilderModel(true);
             strategyConfig.setControllerMappingHyphenStyle(true);
             strategyConfig.setEntitySerialVersionUID(true);
+            strategyConfig.setInclude("permission");
 
             GlobalConfig globalConfig = new GlobalConfig();
             globalConfig.setAuthor("tangjizhouchn@foxmail.com");

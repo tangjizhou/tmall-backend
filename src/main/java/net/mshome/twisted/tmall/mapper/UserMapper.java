@@ -1,9 +1,12 @@
 package net.mshome.twisted.tmall.mapper;
 
+import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,5 +26,13 @@ public interface UserMapper extends BaseMapper<User> {
      * @param newPassword 新密码
      */
     void updatePassword(@Param("username") String username, @Param("newPassword") String newPassword);
+
+    /**
+     * 根据用户id查询用户权限
+     *
+     * @param userId 用户id
+     * @return 角色列表
+     */
+    List<Role> listUserRoles(Long userId);
 
 }

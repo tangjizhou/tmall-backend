@@ -3,6 +3,7 @@ package net.mshome.twisted.tmall.controller;
 
 import net.mshome.twisted.tmall.common.Result;
 import net.mshome.twisted.tmall.dto.UserAddDTO;
+import net.mshome.twisted.tmall.dto.UserLoginDTO;
 import net.mshome.twisted.tmall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -27,6 +28,13 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    @PostMapping("/login")
+    public Result<String> login(@RequestBody @Validated UserLoginDTO userLoginDTO) {
+        return Result.<String>builder().build();
+
+    }
+
 
     @PostMapping("/register")
     public Result<String> register(@RequestBody @Validated UserAddDTO userAddDTO) {

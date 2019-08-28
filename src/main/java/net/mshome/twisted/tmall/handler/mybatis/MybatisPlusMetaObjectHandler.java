@@ -18,7 +18,7 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
         if (value != null) {
             return;
         }
-        setFieldValByName("crateTime", LocalDateTime.now(), metaObject);
+        setFieldValByName("createTime", LocalDateTime.now(), metaObject);
     }
 
     @Override

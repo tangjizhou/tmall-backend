@@ -1,12 +1,15 @@
 package net.mshome.twisted.tmall.service;
 
 import net.mshome.twisted.tmall.dto.UserAddDTO;
+import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
@@ -14,6 +17,19 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+    /**
+     * 用户注册
+     *
+     * @param userAddDTO 注册参数
+     */
     void register(UserAddDTO userAddDTO);
+
+    /**
+     * 查询用户角色
+     *
+     * @param userId 用户id
+     * @return 用户对角色
+     */
+    List<Role> listUserRoles(Long userId);
 
 }
