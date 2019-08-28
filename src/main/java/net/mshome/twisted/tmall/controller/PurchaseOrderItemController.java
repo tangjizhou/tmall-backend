@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *  订单项，前端控制器
+ *  前端控制器
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
- * @since 2019-08-15
+ * @since 2019-08-26
  */
 @RestController
-@RequestMapping("/purchaseOrderItem")
+@RequestMapping("/purchase-order-item")
 public class PurchaseOrderItemController {
 
 }

@@ -18,7 +18,7 @@ public class Result<T> {
 
     private boolean success = true;
 
-    private String message = "成功";
+    private String message = "success";
 
     private T result;
 

@@ -26,14 +26,15 @@ public class MybatisPlusGenerator {
             strategyConfig.setEntityLombokModel(true);
             strategyConfig.setRestControllerStyle(true);
             strategyConfig.setEntityBuilderModel(true);
+            strategyConfig.setControllerMappingHyphenStyle(true);
             strategyConfig.setEntitySerialVersionUID(true);
 
             GlobalConfig globalConfig = new GlobalConfig();
             globalConfig.setAuthor("tangjizhouchn@foxmail.com");
-            globalConfig.setFileOverride(false);
+            globalConfig.setFileOverride(true);
             globalConfig.setBaseResultMap(false);
             globalConfig.setOutputDir("./src/main/java");
-
+            globalConfig.setOpen(false);
 
             DataSourceConfig dataSourceConfig = new DataSourceConfig();
             dataSourceConfig.setDbType(DbType.MYSQL);

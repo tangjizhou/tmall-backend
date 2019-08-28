@@ -1,6 +1,6 @@
 package net.mshome.twisted.tmall.service;
 
-import net.mshome.twisted.tmall.entity.Product;
+import net.mshome.twisted.tmall.entity.SqlLog;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author tangjizhouchn@foxmail.com
  * @since 2019-08-26
  */
-public interface IProductService extends IService<Product> {
+public interface ISqlLogService extends IService<SqlLog> {
 
 }

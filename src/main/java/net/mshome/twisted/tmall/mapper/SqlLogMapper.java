@@ -1,7 +1,8 @@
 package net.mshome.twisted.tmall.mapper;
 
-import net.mshome.twisted.tmall.entity.ProductCategory;
+import net.mshome.twisted.tmall.entity.SqlLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author tangjizhouchn@foxmail.com
  * @since 2019-08-26
  */
-public interface ProductCategoryMapper extends BaseMapper<ProductCategory> {
+@Repository
+public interface SqlLogMapper extends BaseMapper<SqlLog> {
 
 }

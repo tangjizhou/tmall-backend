@@ -1,8 +1,8 @@
 package net.mshome.twisted.tmall.service.impl;
 
-import net.mshome.twisted.tmall.entity.Product;
-import net.mshome.twisted.tmall.mapper.ProductMapper;
-import net.mshome.twisted.tmall.service.IProductService;
+import net.mshome.twisted.tmall.entity.SqlLog;
+import net.mshome.twisted.tmall.mapper.SqlLogMapper;
+import net.mshome.twisted.tmall.service.ISqlLogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-08-26
  */
 @Service
-public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements IProductService {
+public class SqlLogServiceImpl extends ServiceImpl<SqlLogMapper, SqlLog> implements ISqlLogService {
 
 }

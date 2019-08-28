@@ -10,9 +10,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
- * @since 2019-08-15
+ * @since 2019-08-26
  */
 public interface IUserService extends IService<User> {
 
     void register(UserAddDTO userAddDTO);
+
 }

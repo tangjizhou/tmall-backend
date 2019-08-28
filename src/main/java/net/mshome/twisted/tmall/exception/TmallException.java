@@ -3,7 +3,7 @@ package net.mshome.twisted.tmall.exception;
 /**
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-18
- * @description 天猫系统最高异常
+ * @description 天猫系统异常
  */
 public class TmallException extends RuntimeException {
 

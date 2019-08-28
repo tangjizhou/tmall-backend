@@ -1,5 +1,10 @@
 package net.mshome.twisted.tmall.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -11,7 +16,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
@@ -22,28 +27,23 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Builder
 @AllArgsConstructor
-public class User implements Serializable {
+public class SqlLog implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    private String username;
-
-    private String password;
+    /**
+     * 执行的sql语句
+     */
+    private String executedSql;
 
     /**
-     * 0:无效,1:有效,9:冻结
+     * 创建时间
      */
-    private Integer state;
-
-    private String realName;
-
-    private String address;
-
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
 
 
 }

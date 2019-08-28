@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2019-08-26
  */
 @RestController
-@RequestMapping("/product-image")
-public class ProductImageController {
+@RequestMapping("/sql-log")
+public class SqlLogController {
 
 }
 

@@ -28,7 +28,7 @@ public class Swagger2Configuration {
                 .license("The Apache License, Version 2.0").licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .termsOfServiceUrl("http://my.csdn.net/elvishehai").build();
 
-        return new Docket(DocumentationType.SWAGGER_2).select()
+        return new Docket(DocumentationType.SWAGGER_2).forCodeGeneration(true).select()
                 .apis(RequestHandlerSelectors.basePackage("net.mshome.twisted.tmall.controller"))
                 .build().apiInfo(apiInfo);
     }
