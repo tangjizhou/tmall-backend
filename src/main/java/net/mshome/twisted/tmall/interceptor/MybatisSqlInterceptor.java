@@ -24,6 +24,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.util.CollectionUtils;
 
 import java.sql.Connection;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,7 +37,8 @@ import java.util.Properties;
  * @description 自定义mybatis插件，实现输出实际执行sql语句
  */
 @Intercepts({
-        @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})
+        @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class}),
+        @Signature(type = StatementHandler.class, method = "batch", args = {Statement.class})
 })
 @Slf4j
 public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements Interceptor {
@@ -94,6 +96,7 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     parameter = getParameterValue(boundSql.getAdditionalParameter(propertyName));
                 }
+                // fixme 此处不严谨，若sql语句中有❓，则替换错位。🤔️
                 sql = sql.replaceFirst("\\?", parameter);
             }
             sqlLogService.save(SqlLog.builder().executedSql(sql).createTime(LocalDateTime.now()).build());
