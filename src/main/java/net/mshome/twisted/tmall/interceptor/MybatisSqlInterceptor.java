@@ -1,5 +1,6 @@
 package net.mshome.twisted.tmall.interceptor;
 
+import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.enums.IEnum;
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -7,7 +8,6 @@ import com.baomidou.mybatisplus.extension.handlers.AbstractSqlParserHandler;
 import lombok.extern.slf4j.Slf4j;
 import net.mshome.twisted.tmall.entity.SqlLog;
 import net.mshome.twisted.tmall.service.ISqlLogService;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -58,7 +58,7 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
         if (CollectionUtils.isEmpty(tableNames)) {
             return invocation.proceed();
         }
-        StatementHandler statementHandler = PluginUtils.realTarget(invocation.getTarget());
+        StatementHandler statementHandler = (StatementHandler) PluginUtils.realTarget(invocation.getTarget());
         MetaObject metaObject = SystemMetaObject.forObject(statementHandler);
         MappedStatement mappedStatement = (MappedStatement) metaObject.getValue("delegate.mappedStatement");
         BoundSql boundSql = (BoundSql) metaObject.getValue("delegate.boundSql");
@@ -114,7 +114,7 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
         if (param instanceof String) {
             value = param.toString();
         } else if (param instanceof Date) {
-            DateFormatUtils.format((Date) param, "yyyy-MM-dd HH:mm:ss");
+            DateUtil.format((Date) param, "yyyy-MM-dd HH:mm:ss");
         } else if (param instanceof IEnum) {
             value = String.valueOf(((IEnum) param).getValue());
         } else {

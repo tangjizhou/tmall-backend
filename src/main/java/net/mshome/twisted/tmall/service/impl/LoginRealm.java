@@ -7,11 +7,9 @@ import net.mshome.twisted.tmall.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.realm.AuthenticatingRealm;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +40,9 @@ public class LoginRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         String username = (String) principalCollection.getPrimaryPrincipal();
         User user = userService.getOne(new QueryWrapper<>(User.builder().username(username).build()));
+        if (user == null) {
+            throw new UnauthenticatedException("账号密码错误");
+        }
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
         List<Role> roleList = userService.listUserRoles(user.getId());

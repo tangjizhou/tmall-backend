@@ -1,19 +1,17 @@
 package net.mshome.twisted.tmall.generator;
 
-import com.baomidou.mybatisplus.generator.InjectionConfig;
-import org.junit.Test;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import org.junit.Test;
 /**
  * @author tangjizhou
  * @date 2019-08-15
  * @description 代码生成器
  */
 public class MybatisPlusGenerator {
-
-
 
 
         @Test
@@ -27,7 +25,6 @@ public class MybatisPlusGenerator {
             strategyConfig.setRestControllerStyle(true);
             strategyConfig.setEntityBuilderModel(true);
             strategyConfig.setControllerMappingHyphenStyle(true);
-            strategyConfig.setEntitySerialVersionUID(true);
             strategyConfig.setInclude("permission");
 
             GlobalConfig globalConfig = new GlobalConfig();

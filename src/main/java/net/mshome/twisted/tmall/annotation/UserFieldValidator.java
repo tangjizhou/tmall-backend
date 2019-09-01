@@ -1,9 +1,9 @@
 package net.mshome.twisted.tmall.annotation;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.service.IUserService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
@@ -31,7 +31,7 @@ public class UserFieldValidator implements ConstraintValidator<UsersField, Strin
 
     @Override
     public boolean isValid(String usernames, ConstraintValidatorContext context) {
-        if (StringUtils.isBlank(usernames)) {
+        if (StrUtil.isBlank(usernames)) {
             return true;
         }
 
@@ -40,14 +40,14 @@ public class UserFieldValidator implements ConstraintValidator<UsersField, Strin
             return count == 0 ? username : null;
         }).filter(Objects::nonNull).collect(Collectors.joining(","));
 
-        if (StringUtils.isBlank(invalidUsers)) {
+        if (StrUtil.isBlank(invalidUsers)) {
             return true;
         }
 
         context.disableDefaultConstraintViolation();
         String messageTemplate = context.getDefaultConstraintMessageTemplate();
-        messageTemplate = StringUtils.isBlank(messageTemplate) ? DEFAULT_MESSAGE : messageTemplate;
-        context.buildConstraintViolationWithTemplate(StringUtils.replace(messageTemplate, "{}", invalidUsers))
+        messageTemplate = StrUtil.isBlank(messageTemplate) ? DEFAULT_MESSAGE : messageTemplate;
+        context.buildConstraintViolationWithTemplate(StrUtil.replace(messageTemplate, "{}", invalidUsers))
                 .addConstraintViolation();
         return false;
     }

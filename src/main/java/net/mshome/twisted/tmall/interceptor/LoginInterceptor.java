@@ -19,13 +19,19 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        String currentUrl = request.getRequestURL().toString();
         User user = (User) request.getSession().getAttribute(SessionConstant.USER_SESSION_KEY);
-        if (user == null) {
-            response.sendRedirect("/user/login");
-        }
+        //if (user == null) {
+        //    if (RequestMethod.GET.name().equals(request.getMethod())) {
+        //        response.sendRedirect("/user/loginPage?redirect=".concat(currentUrl).concat(request.getQueryString()));
+        //        return false;
+        //    }
+        //    response.sendRedirect("/user/loginPage");
+        //    return false;
+        //}
 
-
-        return false;
+        return true;
     }
 
     @Override

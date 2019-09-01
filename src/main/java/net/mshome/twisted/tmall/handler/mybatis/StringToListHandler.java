@@ -1,7 +1,6 @@
 package net.mshome.twisted.tmall.handler.mybatis;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
@@ -19,10 +18,11 @@ import java.util.Optional;
  * @description TODO
  */
 public class StringToListHandler implements TypeHandler<List<String>> {
+
     @Override
     public void setParameter(PreparedStatement ps, int i, List<String> parameter, JdbcType jdbcType) throws SQLException {
         parameter = Optional.ofNullable(parameter).orElse(List.of());
-        ps.setString(i, StringUtils.join(parameter, ","));
+        ps.setString(i, String.join(",", parameter));
     }
 
     @Override
@@ -45,4 +45,5 @@ public class StringToListHandler implements TypeHandler<List<String>> {
         value = Optional.ofNullable(value).orElse(StringPool.EMPTY);
         return Arrays.asList(value.split(StringPool.COMMA));
     }
+
 }
