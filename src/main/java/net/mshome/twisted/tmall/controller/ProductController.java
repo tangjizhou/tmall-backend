@@ -4,7 +4,6 @@ package net.mshome.twisted.tmall.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import net.mshome.twisted.tmall.common.Result;
 import net.mshome.twisted.tmall.entity.Product;
 import net.mshome.twisted.tmall.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,9 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping("/list")
-    public Result<IPage<Product>> listProducts() {
-        IPage<Product> page = new Page<>(1, 10,10);
-        return Result.<IPage<Product>>builder().result(productService.page(page,new QueryWrapper<>())).build();
+    public IPage<Product> listProducts() {
+        IPage<Product> page = new Page<>(1, 10, 10);
+        return productService.page(page, new QueryWrapper<>());
     }
 
 }

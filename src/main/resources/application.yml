@@ -36,6 +36,9 @@ spring:
 #        min-idle: 0
 mybatis-plus:
   type-enums-package: net.mshome.twisted.tmall.enumeration
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  type-handlers-package: net.mshome.twisted.tmall.handler.mybatis
 
 tmall:
   sync:

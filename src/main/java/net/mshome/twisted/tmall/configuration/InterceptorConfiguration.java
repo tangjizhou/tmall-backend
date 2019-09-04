@@ -1,18 +1,20 @@
 package net.mshome.twisted.tmall.configuration;
 
 import io.swagger.models.HttpMethod;
+import net.mshome.twisted.tmall.handler.ReturnValueHandler;
 import net.mshome.twisted.tmall.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
+import org.springframework.web.servlet.config.annotation.*;
+
+import java.util.List;
 
 /**
+ * 拦截器配置
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019/8/28
- * @description 拦截器配置
  */
 @Configuration
 public class InterceptorConfiguration extends WebMvcConfigurationSupport {
@@ -22,9 +24,9 @@ public class InterceptorConfiguration extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/**")
-                .excludePathPatterns("/user/login", "/use/logout")
-                .excludePathPatterns("**/swagger-ui.html");
+        //registry.addInterceptor(loginInterceptor).addPathPatterns("/**")
+        //        .excludePathPatterns("/user/login", "/use/logout")
+        //        .excludePathPatterns("swagger-ui.html","/v2/api-docs","/webjars/**");
     }
 
     @Override
@@ -47,5 +49,6 @@ public class InterceptorConfiguration extends WebMvcConfigurationSupport {
                 .allowCredentials(true).maxAge(3600);
         super.addCorsMappings(registry);
     }
+
 
 }

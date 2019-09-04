@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 用户登陆拦截
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-18
- * @description 用户登陆拦截
  */
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
@@ -22,14 +23,10 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         String currentUrl = request.getRequestURL().toString();
         User user = (User) request.getSession().getAttribute(SessionConstant.USER_SESSION_KEY);
-        //if (user == null) {
-        //    if (RequestMethod.GET.name().equals(request.getMethod())) {
-        //        response.sendRedirect("/user/loginPage?redirect=".concat(currentUrl).concat(request.getQueryString()));
-        //        return false;
-        //    }
-        //    response.sendRedirect("/user/loginPage");
-        //    return false;
-        //}
+        if (user == null) {
+            response.sendRedirect("/user/loginPage");
+            return false;
+        }
 
         return true;
     }

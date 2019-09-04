@@ -1,7 +1,7 @@
 package net.mshome.twisted.tmall.controller;
 
 
-import net.mshome.twisted.tmall.common.Result;
+import net.mshome.twisted.tmall.common.ResultWrapper;
 import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.dto.UserLoginDTO;
 import net.mshome.twisted.tmall.service.IUserService;
@@ -32,22 +32,21 @@ public class UserController {
     private IUserService userService;
 
     @PostMapping("/login")
-    public Result<String> login(HttpServletRequest request, HttpServletResponse response,
-                                @RequestBody UserLoginDTO userLoginDTO) throws Exception {
+    public void login(HttpServletRequest request, HttpServletResponse response,
+                      @RequestBody UserLoginDTO userLoginDTO) throws Exception {
 
         String redirect = request.getParameter("redirect");
         if (redirect != null) {
             response.sendRedirect(redirect);
         }
-        return Result.<String>builder().build();
+
 
     }
 
 
     @PostMapping("/register")
-    public Result<String> register(@RequestBody @Validated UserAddDTO userAddDTO) {
+    public void register(@RequestBody @Validated UserAddDTO userAddDTO) {
         userService.register(userAddDTO);
-        return Result.<String>builder().message("注册成功").build();
     }
 
 

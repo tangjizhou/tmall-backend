@@ -4,26 +4,28 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.mshome.twisted.tmall.enumeration.ErrorCode;
 
 /**
+ * 错误码枚举类
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-18
- * @description TODO
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Result<T> {
+public class ResultWrapper<T> {
 
-    private boolean success = true;
+    private int errorCode = ErrorCode.OK.getValue();
 
-    private String message = "success";
+    private String message = "操作成功";
 
     private T result;
 
-    public Result(boolean success, String message) {
-        this.success = success;
+    public ResultWrapper(int errorCode, String message) {
+        this.errorCode = errorCode;
         this.message = message;
     }
 
