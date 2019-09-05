@@ -12,11 +12,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +29,7 @@ import java.util.List;
  * @date 2019/9/4
  */
 @Component
-public class ReturnValueHandler extends RequestResponseBodyMethodProcessor {
+public class ReturnValueHandler extends RequestResponseBodyMethodProcessor implements HandlerMethodReturnValueHandler {
 
     public ReturnValueHandler(List<HttpMessageConverter<?>> converters) {
         super(converters);
@@ -35,10 +37,13 @@ public class ReturnValueHandler extends RequestResponseBodyMethodProcessor {
 
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
-        List<Class<? extends Annotation>> annotationList = List.of(GetMapping.class, PostMapping.class,
-                RequestMapping.class, PutMapping.class, DeleteMapping.class);
-        Annotation[] annotations = returnType.getMethodAnnotations();
-        return Arrays.stream(annotations).anyMatch(annotation -> annotationList.contains(annotation.annotationType()));
+        Method method = returnType.getMethod();
+        if (method == null || method.getReturnType().isAssignableFrom(ResultWrapper.class)
+                || method.getReturnType().isAssignableFrom(Exception.class)) {
+            return false;
+        }
+        return returnType.hasMethodAnnotation(ResponseBody.class)
+                || method.getDeclaringClass().isAnnotationPresent(RestController.class);
     }
 
     @Override
@@ -47,13 +52,10 @@ public class ReturnValueHandler extends RequestResponseBodyMethodProcessor {
             throws IOException, HttpMediaTypeNotAcceptableException, HttpMessageNotWritableException {
         if (returnValue instanceof TmallException) {
             TmallException exception = (TmallException) returnValue;
-            returnValue = ResultWrapper.builder().result(returnType).errorCode(exception.getErrorCode()).message(exception.getMessage()).build();
+            returnValue = ResultWrapper.builder().result(returnType).code(exception.getErrorCode()).message(exception.getMessage()).build();
         }
         returnValue = ResultWrapper.builder().result(returnValue).build();
-        mavContainer.setRequestHandled(true);
-        ServletServerHttpRequest inputMessage = createInputMessage(webRequest);
-        ServletServerHttpResponse outputMessage = createOutputMessage(webRequest);
-        writeWithMessageConverters(returnValue, returnType, inputMessage, outputMessage);
+        super.handleReturnValue(returnValue, returnType, mavContainer, webRequest);
     }
 
 }
