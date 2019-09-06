@@ -2,13 +2,14 @@ package net.mshome.twisted.tmall.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
@@ -17,11 +18,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class ProductImage implements Serializable {
+public class ProductImage extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
-
-    private Long id;
+    private static final long serialVersionUID = 1L;
 
     private Integer productId;
 
@@ -30,10 +29,6 @@ public class ProductImage implements Serializable {
     private String fileType;
 
     private String location;
-
-    private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
 
 
 }

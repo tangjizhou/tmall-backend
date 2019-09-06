@@ -20,11 +20,9 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Product implements Serializable {
+public class Product extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    private Long id;
 
     /**
      * 名称
@@ -45,12 +43,5 @@ public class Product implements Serializable {
     private BigDecimal originalPrice;
 
     private BigDecimal promotePrice;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime createTime;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime updateTime;
-
 
 }

@@ -17,11 +17,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class ProductCategory implements Serializable {
+public class ProductCategory extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
-
-    private Long id;
 
     private String categoryName;
 
@@ -31,10 +29,5 @@ public class ProductCategory implements Serializable {
     private Integer state;
 
     private String remark;
-
-    private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
-
 
 }

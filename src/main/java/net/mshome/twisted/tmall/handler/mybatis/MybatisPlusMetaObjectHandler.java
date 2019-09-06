@@ -6,29 +6,30 @@ import org.apache.ibatis.reflection.MetaObject;
 import java.time.LocalDateTime;
 
 /**
+ * 公共字段填充
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019/8/26
- * @description 公共字段填充
  */
 public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        Object value = getFieldValByName("createTime", metaObject);
-        if (value != null) {
-            return;
-        }
-        setFieldValByName("createTime", LocalDateTime.now(), metaObject);
+        setIfAbsent("createTime", LocalDateTime.now(), metaObject);
+        setIfAbsent("updateTime", LocalDateTime.now(), metaObject);
+
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        Object value = getFieldValByName("updateTime", metaObject);
-        if (value != null) {
+        setIfAbsent("updateTime", LocalDateTime.now(), metaObject);
+    }
+
+    private void setIfAbsent(String fieldName, Object value, MetaObject metaobject) {
+        if (getFieldValByName(fieldName, metaobject) != null) {
             return;
         }
-        setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-
+        setFieldValByName(fieldName, value, metaobject);
     }
 
 }

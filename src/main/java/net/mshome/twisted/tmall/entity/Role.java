@@ -17,11 +17,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Role implements Serializable {
+public class Role extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
-
-    private Long id;
 
     /**
      * 角色名
@@ -32,16 +30,5 @@ public class Role implements Serializable {
      * 状态:1:正常,0:禁用
      */
     private Boolean state;
-
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    private LocalDateTime updateTime;
-
 
 }

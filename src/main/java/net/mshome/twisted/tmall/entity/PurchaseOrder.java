@@ -18,11 +18,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class PurchaseOrder implements Serializable {
+public class PurchaseOrder extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
-
-    private Long id;
 
     private Integer userId;
 
@@ -42,10 +40,5 @@ public class PurchaseOrder implements Serializable {
     private LocalDateTime payTime;
 
     private LocalDateTime shipTime;
-
-    private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
-
 
 }

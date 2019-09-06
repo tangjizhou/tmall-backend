@@ -24,11 +24,9 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Builder
 @AllArgsConstructor
-public class User implements Serializable {
+public class User extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    private Long id;
 
     private String username;
 
@@ -42,12 +40,5 @@ public class User implements Serializable {
     private String realName;
 
     private String address;
-
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
 
 }

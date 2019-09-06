@@ -18,11 +18,10 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class PurchaseOrderItem implements Serializable {
+public class PurchaseOrderItem extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    private Long id;
 
     private Integer orderId;
 
@@ -40,10 +39,5 @@ public class PurchaseOrderItem implements Serializable {
      * 0:交易失败,1:交易成功
      */
     private Integer state;
-
-    private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
-
 
 }
