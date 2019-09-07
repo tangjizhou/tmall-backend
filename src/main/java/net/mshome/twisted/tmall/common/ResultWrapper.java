@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import net.mshome.twisted.tmall.enumeration.ErrorCode;
 
 /**
- * 错误码枚举类
+ * 返回给前台的消息包装类
  *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-18
@@ -18,15 +18,12 @@ import net.mshome.twisted.tmall.enumeration.ErrorCode;
 @AllArgsConstructor
 public class ResultWrapper<T> {
 
+    @Builder.Default
     private int code = ErrorCode.OK.getValue();
 
+    @Builder.Default
     private String message = "操作成功";
 
     private T result;
-
-    public ResultWrapper(int code, String message) {
-        this.code = code;
-        this.message = message;
-    }
 
 }

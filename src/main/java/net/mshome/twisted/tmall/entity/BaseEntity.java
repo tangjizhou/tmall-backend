@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,7 +19,10 @@ import java.time.LocalDateTime;
  * @date 2019/9/6
  */
 @Data
-abstract class BaseEntity implements Serializable {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 2364242973192805226L;
 
@@ -24,18 +30,17 @@ abstract class BaseEntity implements Serializable {
      * 数据表主键
      */
     @TableId(value = "id", type = IdType.ID_WORKER)
-    private Long id;
+    protected Long id;
 
     /**
      * 数据创建时间
      */
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    protected LocalDateTime createTime;
     /**
      * 数据更新时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
+    protected LocalDateTime updateTime;
 
 }

@@ -32,9 +32,10 @@ import java.util.List;
 import java.util.Properties;
 
 /**
+ * 自定义mybatis插件，实现输出实际执行sql语句
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-18
- * @description 自定义mybatis插件，实现输出实际执行sql语句
  */
 @Intercepts({
         @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class}),
@@ -43,6 +44,9 @@ import java.util.Properties;
 @Slf4j
 public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements Interceptor {
 
+    /**
+     * 获取配置中需要拦截的表
+     */
     @Value("#{'${tmall.sync.tables:}'.split(',')}")
     private List<String> tableNames;
 
@@ -60,7 +64,7 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
         if (CollectionUtils.isEmpty(tableNames)) {
             return invocation.proceed();
         }
-        StatementHandler statementHandler = (StatementHandler) PluginUtils.realTarget(invocation.getTarget());
+        StatementHandler statementHandler = PluginUtils.realTarget(invocation.getTarget());
         MetaObject metaObject = SystemMetaObject.forObject(statementHandler);
         MappedStatement mappedStatement = (MappedStatement) metaObject.getValue("delegate.mappedStatement");
         BoundSql boundSql = (BoundSql) metaObject.getValue("delegate.boundSql");
@@ -99,13 +103,20 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
                 // fixme 此处不严谨，若sql语句中有❓，则替换错位。🤔️
                 sql = sql.replaceFirst("\\?", parameter);
             }
-            sqlLogService.save(SqlLog.builder().executedSql(sql).createTime(LocalDateTime.now()).build());
+            // 将拦截到的sql语句插入日志表中
+            sqlLogService.save(SqlLog.builder().executedSql(sql).build());
         } catch (Exception e) {
-            log.error("intercept sql error", e);
+            log.error(String.format("intercept sql error: [%s]", sql), e);
         }
         return invocation.proceed();
     }
 
+    /**
+     * 获取参数
+     *
+     * @param param Object类型参数
+     * @return 转换之后的参数
+     */
     private static String getParameterValue(Object param) {
         if (param == null) {
             return "null";
