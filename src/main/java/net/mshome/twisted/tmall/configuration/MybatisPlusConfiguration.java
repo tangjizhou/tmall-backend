@@ -8,9 +8,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * mybatis-plus配置
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019/8/26
- * @description mybatis-plus配置
  */
 @Configuration
 @MapperScan("net.mshome.twisted.tmall.mapper")

@@ -13,9 +13,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
+ * 用户字段校验器
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-15
- * @description 用户字段校验器
  */
 public class UserFieldValidator implements ConstraintValidator<UsersField, String> {
 
@@ -51,4 +52,5 @@ public class UserFieldValidator implements ConstraintValidator<UsersField, Strin
                 .addConstraintViolation();
         return false;
     }
+
 }

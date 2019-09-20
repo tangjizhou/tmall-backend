@@ -1,9 +1,10 @@
 package net.mshome.twisted.tmall.constant;
 
 /**
+ * session变量常量类
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019/8/28
- * @description session变量常量类
  */
 public final class SessionConstant {
 

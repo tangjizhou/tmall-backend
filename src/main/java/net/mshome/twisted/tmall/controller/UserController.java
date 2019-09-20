@@ -1,19 +1,17 @@
 package net.mshome.twisted.tmall.controller;
 
 
-import net.mshome.twisted.tmall.common.ResultWrapper;
 import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.dto.UserLoginDTO;
+import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * <p>
@@ -39,8 +37,6 @@ public class UserController {
         if (redirect != null) {
             response.sendRedirect(redirect);
         }
-
-
     }
 
 
@@ -49,6 +45,10 @@ public class UserController {
         userService.register(userAddDTO);
     }
 
+    @GetMapping("/listAll")
+    public List<User> listAll() {
+        return userService.list();
+    }
 
 }
 

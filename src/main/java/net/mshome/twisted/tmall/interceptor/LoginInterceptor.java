@@ -21,12 +21,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String currentUrl = request.getRequestURL().toString();
-        User user = (User) request.getSession().getAttribute(SessionConstant.USER_SESSION_KEY);
-        if (user == null) {
-            response.sendRedirect("/user/loginPage");
-            return false;
-        }
+        //String currentUrl = request.getRequestURL().toString();
+        //User user = (User) request.getSession().getAttribute(SessionConstant.USER_SESSION_KEY);
+        //if (user == null) {
+        //    response.sendRedirect("/user/loginPage");
+        //    return false;
+        //}
 
         return true;
     }
