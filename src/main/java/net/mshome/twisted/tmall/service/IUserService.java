@@ -4,6 +4,8 @@ import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import net.mshome.twisted.tmall.enumeration.UserState;
+import net.mshome.twisted.tmall.vo.UserQueryVO;
 
 import java.util.List;
 
@@ -31,5 +33,7 @@ public interface IUserService extends IService<User> {
      * @return 用户对角色
      */
     List<Role> listUserRoles(Long userId);
+
+    List<UserQueryVO> listAll(String username, String realName, UserState userState);
 
 }

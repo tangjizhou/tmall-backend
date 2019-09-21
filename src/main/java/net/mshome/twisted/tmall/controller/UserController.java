@@ -3,15 +3,19 @@ package net.mshome.twisted.tmall.controller;
 
 import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.dto.UserLoginDTO;
-import net.mshome.twisted.tmall.entity.User;
+import net.mshome.twisted.tmall.enumeration.UserState;
 import net.mshome.twisted.tmall.service.IUserService;
+import net.mshome.twisted.tmall.vo.UserStateVO;
+import net.mshome.twisted.tmall.vo.UserQueryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -33,10 +37,6 @@ public class UserController {
     public void login(HttpServletRequest request, HttpServletResponse response,
                       @RequestBody UserLoginDTO userLoginDTO) throws Exception {
 
-        String redirect = request.getParameter("redirect");
-        if (redirect != null) {
-            response.sendRedirect(redirect);
-        }
     }
 
 
@@ -46,8 +46,17 @@ public class UserController {
     }
 
     @GetMapping("/listAll")
-    public List<User> listAll() {
-        return userService.list();
+    public List<UserQueryVO> listAll(@RequestParam String username, @RequestParam String realName,
+                                     @RequestParam UserState userState) {
+        return userService.listAll(username, realName, userState);
+    }
+
+    @GetMapping("/listUserSates")
+    public List<UserStateVO> listUserSate() {
+        return Arrays.stream(UserState.values()).map(userState ->
+                UserStateVO.builder().label(userState.name()).description(userState.getDescription())
+                        .value(userState.getValue()).build())
+                .collect(Collectors.toList());
     }
 
 }

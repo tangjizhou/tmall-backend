@@ -6,6 +6,7 @@ import net.mshome.twisted.tmall.interceptor.MybatisSqlInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * mybatis-plus配置
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2019/8/26
  */
 @Configuration
+@EnableTransactionManagement
 @MapperScan("net.mshome.twisted.tmall.mapper")
 public class MybatisPlusConfiguration {
 

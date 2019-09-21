@@ -3,6 +3,7 @@ package net.mshome.twisted.tmall.mapper;
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import net.mshome.twisted.tmall.vo.UserQueryVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -34,5 +35,16 @@ public interface UserMapper extends BaseMapper<User> {
      * @return 角色列表
      */
     List<Role> listUserRoles(Long userId);
+
+    /**
+     * 查询用户列表
+     *
+     * @param username 账号
+     * @param realName 姓名
+     * @param state    状态
+     * @return 用户信息
+     */
+    List<UserQueryVO> listAll(@Param("username") String username, @Param("realName") String realName,
+                              @Param("state") Integer state);
 
 }

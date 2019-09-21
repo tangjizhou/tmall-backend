@@ -12,7 +12,7 @@ public enum ErrorCode implements IEnum<Integer> {
     /**
      * 成功
      */
-    OK(0),
+    OK(2000),
     /**
      * 没有登陆
      */

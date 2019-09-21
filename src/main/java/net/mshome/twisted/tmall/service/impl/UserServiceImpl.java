@@ -5,15 +5,13 @@ import com.google.common.base.Preconditions;
 import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
-import net.mshome.twisted.tmall.exception.TmallException;
+import net.mshome.twisted.tmall.enumeration.UserState;
 import net.mshome.twisted.tmall.mapper.UserMapper;
 import net.mshome.twisted.tmall.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import net.mshome.twisted.tmall.vo.UserQueryVO;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
-import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,10 +38,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public List<Role> listUserRoles(Long userId) {
-        if(userId == null || userId == 0) {
+        if (userId == null || userId == 0) {
             return Collections.emptyList();
         }
         return baseMapper.listUserRoles(userId);
+    }
+
+    @Override
+    public List<UserQueryVO> listAll(String username, String realName, UserState userState) {
+        return baseMapper.listAll(username, realName, userState == null ? null : userState.getValue());
     }
 
 }

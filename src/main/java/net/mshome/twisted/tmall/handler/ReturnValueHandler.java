@@ -37,7 +37,7 @@ public class ReturnValueHandler extends RequestResponseBodyMethodProcessor imple
             return false;
         }
 
-        return super.supportsParameter(returnType);
+        return super.supportsReturnType(returnType);
     }
 
     @Override

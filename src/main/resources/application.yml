@@ -19,9 +19,6 @@ spring:
       connect-properties:
         config.decrypt: true
         config.decrypt.key: ${spring.datasource.druid.public-key}
-
-  profiles:
-    active: dev
   application:
     name: tmall
 
@@ -39,6 +36,7 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   type-handlers-package: net.mshome.twisted.tmall.handler.mybatis
+  mapper-locations: classpath:mapper/*Mapper.xml
 
 tmall:
   sync:
