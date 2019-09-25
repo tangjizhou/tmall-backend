@@ -27,7 +27,7 @@ public class UserFieldValidator implements ConstraintValidator<UsersField, Strin
 
     @Override
     public void initialize(UsersField constraintAnnotation) {
-        DEFAULT_MESSAGE = UsersField.defaultMessage;
+        DEFAULT_MESSAGE = UsersField.DEFAULT_MESSAGE;
     }
 
     @Override

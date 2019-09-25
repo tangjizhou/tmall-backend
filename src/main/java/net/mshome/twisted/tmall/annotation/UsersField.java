@@ -10,9 +10,10 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 
 /**
+ * 用户字段校验注解
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-15
- * @description 用户字段校验注解
  */
 
 @Documented
@@ -23,7 +24,7 @@ public @interface UsersField {
 
     String message() default "";
 
-    String defaultMessage = "用户{}不存在";
+    String DEFAULT_MESSAGE = "用户{}不存在";
 
     Class<?>[] groups() default {};
 
