@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tmall
+  labels:
+    app: tmall
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: tmall
+      labels:
+        app: tmall
+    spec:
+      containers:
+        - name: tmall
+          image: tmall:0.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: servlet-port
+              containerPort: 8090
+              hostPort: 8090
+              protocol: TCP
+          env:
+            - name: profile
+              value: test
+          resources:
+            requests:
+              memory: 200
+          livenessProbe:
+            httpGet:
+              path: /tmall/actuator
+              host: localhost
+              port: 8090
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 3
+            periodSeconds: 5
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: tmall
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tmall-nodeport
+spec:
+  selector:
+    app: tmall
+  ports:
+    - port: 8090
+      nodePort: 32700
+  type: NodePort

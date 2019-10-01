@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class BaseEntity implements Serializable {
      * 数据表主键
      */
     @TableId(value = "id", type = IdType.ID_WORKER)
+    @ApiModelProperty(hidden = true)
     @JsonSerialize(using = ToStringSerializer.class)
     protected Long id;
 
@@ -38,12 +40,14 @@ public class BaseEntity implements Serializable {
      * 数据创建时间
      */
     @TableField(fill = FieldFill.INSERT)
+    @ApiModelProperty(hidden = true)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     protected LocalDateTime createTime;
     /**
      * 数据更新时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
+    @ApiModelProperty(hidden = true)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     protected LocalDateTime updateTime;
 
