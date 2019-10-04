@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  hostPath:
+    path: "/Users/tangjizhou/work/dev-tool/k8s/volume/mysql"

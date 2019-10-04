@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tmall
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       name: tmall
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tmall
-          image: tmall:0.2
+          image: tmall-test:1.1
           imagePullPolicy: IfNotPresent
           ports:
             - name: servlet-port
