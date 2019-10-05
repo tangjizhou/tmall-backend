@@ -1,3 +1,4 @@
+# create database tmall;
 use tmall;
 create user tmall identified by 'tmallpass';
 grant all privileges on tmall.* to tmall@'%' with grant option ;

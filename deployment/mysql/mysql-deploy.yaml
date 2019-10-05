@@ -21,13 +21,14 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "rootpass"
-      restartPolicy: Always
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-storage
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
             claimName: mysql-pvc
-
-
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
@@ -40,5 +41,5 @@ spec:
     - protocol: "TCP"
       port: 3306
       targetPort: 3306
-      nodePort: 32609
+      nodePort: 32699
   type: NodePort

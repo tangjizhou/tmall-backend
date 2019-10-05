@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
     public ResultWrapper<String> handleException(Exception e, HttpServletRequest request) {
         log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);
         return ResultWrapper.<String>builder().code(ErrorCode.SERVER_INTERNAL_ERROR.getValue())
-                .message(e.getMessage()).build();
+                .message("服务器异常").build();
     }
 
 }

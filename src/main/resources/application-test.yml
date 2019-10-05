@@ -1,7 +1,7 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://10.98.36.114:3306/tmall?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://10.103.230.247:3306/tmall?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&allowPublicKeyRetrieval=true
       username: tmall
       password: C1JiG51qZPnW5gYIAczJ1aPPF9sPkAvOofQGXor/ictrloCluSk4BYPSwkcx4lcN1DE58FcgPQD+yfRjs025YQ==
       public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIKMRMProkDVCg/TA0yR6/HRy2boGt6sE1rtYe7+v0svv5DUC5YF1RM0aLy+KV6hDh0c+yXq9HFl9WTOgNz+IUkCAwEAAQ==
