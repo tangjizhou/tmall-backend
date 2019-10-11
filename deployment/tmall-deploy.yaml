@@ -14,33 +14,41 @@ spec:
     spec:
       containers:
         - name: tmall
-          image: tmall-test:1.1
+          image: tmall-test:1.0
           imagePullPolicy: IfNotPresent
           ports:
-            - name: servlet-port
-              containerPort: 8090
-              hostPort: 8090
-              protocol: TCP
+            - containerPort: 8090
           env:
-            - name: profile
+            - name: ACTIVE_PROFILE
               value: test
           resources:
             requests:
-              memory: 200
+              memory: 100Mi
+              cpu: 500m
+            limits:
+              memory: 500Mi
+              cpu: 1000m
           livenessProbe:
             httpGet:
               path: /tmall/actuator
-              host: localhost
               port: 8090
               scheme: HTTP
-            initialDelaySeconds: 5
-            timeoutSeconds: 3
+            initialDelaySeconds: 120
+            timeoutSeconds: 5
             periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: 8090
+              path: /tmall/actuator
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 5
+            timeoutSeconds: 5
       restartPolicy: Always
+      hostNetwork: false
   selector:
     matchLabels:
       app: tmall
-
 ---
 apiVersion: v1
 kind: Service

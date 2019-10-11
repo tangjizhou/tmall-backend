@@ -21,7 +21,8 @@ spring:
         config.decrypt.key: ${spring.datasource.druid.public-key}
   application:
     name: tmall
-
+  profiles:
+    active: ${ACTIVE_PROFILE:default}
 #  redis:
 #    host: 127.0.0.1
 #    port: 6379
