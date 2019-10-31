@@ -96,6 +96,11 @@
         <!--            <artifactId>shiro-spring-boot-web-starter</artifactId>-->
         <!--            <version>1.4.1</version>-->
         <!--        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.1.0-beta4</version>
+        </dependency>
 
         <dependency>
             <groupId>cn.hutool</groupId>
