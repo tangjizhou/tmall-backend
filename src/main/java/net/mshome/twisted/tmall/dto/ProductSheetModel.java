@@ -3,6 +3,7 @@ package net.mshome.twisted.tmall.dto;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import com.alibaba.excel.annotation.write.style.HeadRowHeight;
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -55,6 +56,7 @@ public class ProductSheetModel {
     public Product toProduct() {
         Product product = new Product();
         BeanUtils.copyProperties(this, product);
+        product.setId(IdWorker.getId());
         return product;
     }
 

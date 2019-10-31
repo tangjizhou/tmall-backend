@@ -45,8 +45,8 @@ public class ProductImportListener extends AnalysisEventListener<ProductSheetMod
             ProductSheetModel sheetModel = sheetModels.get(i);
             // 校验数据合法性
             List<String> cellErrorMsgList = new ArrayList<>(List.of(errorMsgPrefix));
-            addCellErrorMsg(cellErrorMsgList, StringUtils.isBlank(sheetModel.getName()), "产品名称不能为空");
-            addCellErrorMsg(cellErrorMsgList, BigDecimal.ZERO.equals(sheetModel.getPromotePrice()), "产品价格不能为0");
+            addCellErrorMsg(cellErrorMsgList, StringUtils.isNotBlank(sheetModel.getName()), "产品名称不能为空");
+            addCellErrorMsg(cellErrorMsgList, sheetModel.getPromotePrice().doubleValue() != 0.0d, "产品价格不能为0");
             String rowErrorMsg = String.join(",", cellErrorMsgList);
 
             if (rowErrorMsg.equals(errorMsgPrefix)) {
