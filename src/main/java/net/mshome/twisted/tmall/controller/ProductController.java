@@ -62,7 +62,7 @@ public class ProductController {
         Assert.notNull(excel, "请选择需要上传的Excel文件");
         try (InputStream inputStream = excel.getInputStream()) {
             ProductImportListener importListener = new ProductImportListener(productService);
-            EasyExcel.read(inputStream, ProductSheetModel.class, importListener).sheet().autoTrim(true).doRead();
+            EasyExcel.read(inputStream, ProductSheetModel.class, importListener).sheet(0).autoTrim(true).doRead();
             return importListener.getErrors().size() == 0 ? List.of("导入成功") : importListener.getErrors();
         } catch (Exception e) {
             log.error("导入文件失败", e);

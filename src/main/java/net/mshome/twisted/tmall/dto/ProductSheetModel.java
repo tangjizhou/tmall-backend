@@ -33,16 +33,16 @@ public class ProductSheetModel {
     @ExcelProperty(value = "名称", index = 1)
     private String name;
 
-    @ExcelProperty(value = "简要描述", index = 1)
+    @ExcelProperty(value = "简要描述", index = 2)
     private String briefIntroduction;
 
-    @ExcelProperty(value = "详细描述", index = 1)
+    @ExcelProperty(value = "详细描述", index = 3)
     private String detailIntroduction;
 
-    @ExcelProperty(value = "原价", index = 1)
+    @ExcelProperty(value = "原价", index = 4)
     private BigDecimal originalPrice;
 
-    @ExcelProperty(value = "促销价", index = 1)
+    @ExcelProperty(value = "促销价", index = 5)
     private BigDecimal promotePrice;
 
     public static ProductSheetModel from(Product product) {
@@ -51,5 +51,11 @@ public class ProductSheetModel {
         return sheetModel;
     }
 
+
+    public Product toProduct() {
+        Product product = new Product();
+        BeanUtils.copyProperties(this, product);
+        return product;
+    }
 
 }
