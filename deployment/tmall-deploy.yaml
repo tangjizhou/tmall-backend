@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tmall
-          image: tmall-test:1.0
+          image: tmall:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8090
@@ -41,7 +41,7 @@ spec:
               port: 8090
               path: /tmall/actuator
               scheme: HTTP
-            initialDelaySeconds: 60
+            initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
       restartPolicy: Always
