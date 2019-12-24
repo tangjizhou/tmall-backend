@@ -54,12 +54,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tmall-nodeport
+  name: tmall
   namespace: twisted-fate
 spec:
   selector:
     app: tmall
   ports:
     - port: 8090
-      nodePort: 32700
-  type: NodePort
+      targetPort: 8090
