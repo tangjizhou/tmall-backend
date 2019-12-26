@@ -13,9 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * 以逗号隔开的转换为List
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-24
- * @description TODO
  */
 public class StringToListHandler implements TypeHandler<List<String>> {
 

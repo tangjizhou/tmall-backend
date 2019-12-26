@@ -1,7 +1,7 @@
 server:
   port: 8090
   servlet:
-    context-path: /tmall
+    context-path: /tmall-service
 spring:
   datasource:
     druid:
@@ -20,7 +20,7 @@ spring:
         config.decrypt: true
         config.decrypt.key: ${spring.datasource.druid.public-key}
   application:
-    name: tmall
+    name: tmall-service
   profiles:
     active: ${ACTIVE_PROFILE:default}
 #  redis:

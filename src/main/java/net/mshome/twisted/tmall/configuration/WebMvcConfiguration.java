@@ -36,7 +36,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         final List<HandlerMethodReturnValueHandler> originalHandlers = requestMappingHandlerAdapter.getReturnValueHandlers();
         if (null != originalHandlers) {
             newHandlers.addAll(originalHandlers);
-            final int index = obtainValueHandlerPosition(originalHandlers, RequestResponseBodyMethodProcessor.class);
+            final int index = obtainValueHandlerPosition(originalHandlers);
             newHandlers.add(index, returnValueHandler);
         } else {
             newHandlers.add(returnValueHandler);
@@ -48,13 +48,12 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      * 获取让自定义处理器生效应处于的位置
      *
      * @param originalHandlers 已经添加的返回值处理器
-     * @param handlerClass     返回值处理器的类型
      * @return 自定义处理器需要的位置
      */
-    private int obtainValueHandlerPosition(final List<HandlerMethodReturnValueHandler> originalHandlers, Class<?> handlerClass) {
+    private int obtainValueHandlerPosition(final List<HandlerMethodReturnValueHandler> originalHandlers) {
         for (int i = 0; i < originalHandlers.size(); i++) {
             final HandlerMethodReturnValueHandler valueHandler = originalHandlers.get(i);
-            if (handlerClass.isAssignableFrom(valueHandler.getClass())) {
+            if (RequestResponseBodyMethodProcessor.class.isAssignableFrom(valueHandler.getClass())) {
                 return i;
             }
         }

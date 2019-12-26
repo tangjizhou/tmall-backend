@@ -1,14 +1,11 @@
 package net.mshome.twisted.tmall.configuration;
 
-import io.swagger.models.HttpMethod;
-import net.mshome.twisted.tmall.handler.ReturnValueHandler;
 import net.mshome.twisted.tmall.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
-import org.springframework.web.servlet.config.annotation.*;
-
-import java.util.List;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
  * 拦截器配置
@@ -36,14 +33,5 @@ public class InterceptorConfiguration extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/**");
         super.addResourceHandlers(registry);
     }
-
-    @Override
-    protected void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("*")
-                .allowedMethods(HttpMethod.POST.name(), HttpMethod.GET.name())
-                .allowCredentials(true).maxAge(3600);
-        super.addCorsMappings(registry);
-    }
-
 
 }

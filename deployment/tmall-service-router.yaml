@@ -1,14 +1,14 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: tmall
+  name: tmall-service
   namespace: twisted-fate
 spec:
   entryPoints:
     - web
   routes:
-    - match: PathPrefix(`/tmall/`)
+    - match: PathPrefix(`/tmall-service/`)
       kind: Rule
       services:
-        - name: tmall-frontend
-          port: 80
+        - name: tmall
+          port: 8090

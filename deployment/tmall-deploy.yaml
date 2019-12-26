@@ -6,7 +6,7 @@ metadata:
   labels:
     app: tmall
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       name: tmall
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: tmall
-          image: tmall:1.1
+          image: tmall-service:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8090
@@ -31,7 +31,7 @@ spec:
               cpu: 1000m
           livenessProbe:
             httpGet:
-              path: /tmall/actuator
+              path: /tmall-service/actuator
               port: 8090
               scheme: HTTP
             initialDelaySeconds: 120
@@ -40,7 +40,7 @@ spec:
           readinessProbe:
             httpGet:
               port: 8090
-              path: /tmall/actuator
+              path: /tmall-service/actuator
               scheme: HTTP
             initialDelaySeconds: 30
             periodSeconds: 5
