@@ -6,9 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.mshome.twisted.tmall.dto.ProductSheetModel;
 import net.mshome.twisted.tmall.entity.Product;
 import net.mshome.twisted.tmall.service.IProductService;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 

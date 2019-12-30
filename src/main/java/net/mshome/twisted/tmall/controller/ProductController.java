@@ -14,7 +14,6 @@ import net.mshome.twisted.tmall.exception.TmallException;
 import net.mshome.twisted.tmall.service.IProductService;
 import net.mshome.twisted.tmall.service.excel.ProductExportHandler;
 import net.mshome.twisted.tmall.service.excel.ProductImportListener;
-import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.util.Assert;
@@ -76,7 +75,7 @@ public class ProductController {
     private void exportProducts(@ApiIgnore HttpServletResponse response) {
         try (OutputStream outputStream = response.getOutputStream()) {
             String fileName = URLEncoder.encode("产品.xlsx", StandardCharsets.UTF_8.displayName());
-            response.setContentType(ContentType.APPLICATION_OCTET_STREAM.getMimeType());
+            response.setContentType("application/octet-stream");
             response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=".concat(fileName));
             List<ProductSheetModel> productSheetModels = productService.list().stream().map(ProductSheetModel::from)
                     .collect(Collectors.toList());

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tmall
+  name: tmall-service
   namespace: twisted-fate
   labels:
-    app: tmall
+    app: tmall-service
 spec:
   replicas: 1
   template:
     metadata:
-      name: tmall
+      name: tmall-service
       labels:
-        app: tmall
+        app: tmall-service
     spec:
       containers:
-        - name: tmall
+        - name: tmall-service
           image: tmall-service:1.0
           imagePullPolicy: IfNotPresent
           ports:
@@ -49,16 +49,16 @@ spec:
       hostNetwork: false
   selector:
     matchLabels:
-      app: tmall
+      app: tmall-service
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: tmall
+  name: tmall-service
   namespace: twisted-fate
 spec:
   selector:
-    app: tmall
+    app: tmall-service
   ports:
     - port: 8090
       targetPort: 8090
