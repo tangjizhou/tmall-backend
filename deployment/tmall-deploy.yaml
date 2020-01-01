@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tmall-service
-  namespace: twisted-fate
+  namespace: cad-t4
   labels:
     app: tmall-service
 spec:
@@ -55,7 +55,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tmall-service
-  namespace: twisted-fate
+  namespace: cad-t4
 spec:
   selector:
     app: tmall-service
