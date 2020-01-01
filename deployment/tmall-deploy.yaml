@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: tmall-service
-          image: tmall-service:1.0
+          image: registry.cn-shanghai.aliyuncs.com/twisted-fate/tmall-service:26
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8090
