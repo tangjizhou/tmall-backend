@@ -10,5 +10,5 @@ spec:
     - match: PathPrefix(`/tmall-service/`)
       kind: Rule
       services:
-        - name: tmall
+        - name: tmall-service
           port: 8090
