@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.mshome.twisted.tmall.enumeration.DataState;
 
 import java.io.Serializable;
 
 /**
  * <p>
- *
+ * 用户数据库映射类
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
@@ -28,11 +29,6 @@ public class User extends BaseEntity implements Serializable {
     private String username;
 
     private String password;
-
-    /**
-     * 0:无效,1:有效,9:冻结
-     */
-    private Integer state;
 
     private String realName;
 

@@ -28,19 +28,19 @@ create table product
     update_time         datetime                null on update CURRENT_TIMESTAMP
 );
 
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (1, '手机', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (2, '电视机', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (3, '平板', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (4, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (5, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (6, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (7, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (8, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (9, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (10, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (11, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (12, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
-INSERT INTO tmall.product (id, name, category_id, state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (13, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (1, '手机', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (2, '电视机', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (3, '平板', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (4, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (5, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (6, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (7, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (8, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (9, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (10, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (11, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (12, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
+INSERT INTO tmall.product (id, name, category_id, data_state, brief_introduction, detail_introduction, original_price, promote_price, create_time, update_time) VALUES (13, '笔记本', 0, 1, '', '', 0, 0, null, '2019-08-26 22:37:15');
 create table product_category
 (
     id            bigint unsigned         not null
@@ -350,10 +350,10 @@ create table user
         unique (username)
 );
 
-INSERT INTO tmall.user (id, username, password, state, real_name, address, create_time, update_time) VALUES (1163101271044927490, 'tangjizhou', '1111111', 1, '唐继洲', '四川成都高新西区百草路金色海伦', '2019-08-18 22:52:07', '2019-08-25 23:40:25');
-INSERT INTO tmall.user (id, username, password, state, real_name, address, create_time, update_time) VALUES (1165262062179356673, 'zhouwenxue', '123', 1, '周文学', '国腾园', '2019-08-24 21:58:20', '2019-08-24 21:58:20');
-INSERT INTO tmall.user (id, username, password, state, real_name, address, create_time, update_time) VALUES (1165270942976348162, 'zhouw?enxue', '123', 0, '周文学', '国腾园', '2019-08-24 22:33:37', '2019-09-21 23:21:15');
-INSERT INTO tmall.user (id, username, password, state, real_name, address, create_time, update_time) VALUES (1166710621160464386, 'string', '124234', 1, 'string', 'string', '2019-08-28 21:54:23', '2019-09-21 00:01:35');
+INSERT INTO tmall.user (id, username, password, data_state, real_name, address, create_time, update_time) VALUES (1163101271044927490, 'tangjizhou', '1111111', 1, '唐继洲', '四川成都高新西区百草路金色海伦', '2019-08-18 22:52:07', '2019-08-25 23:40:25');
+INSERT INTO tmall.user (id, username, password, data_state, real_name, address, create_time, update_time) VALUES (1165262062179356673, 'zhouwenxue', '123', 1, '周文学', '国腾园', '2019-08-24 21:58:20', '2019-08-24 21:58:20');
+INSERT INTO tmall.user (id, username, password, data_state, real_name, address, create_time, update_time) VALUES (1165270942976348162, 'zhouw?enxue', '123', 0, '周文学', '国腾园', '2019-08-24 22:33:37', '2019-09-21 23:21:15');
+INSERT INTO tmall.user (id, username, password, data_state, real_name, address, create_time, update_time) VALUES (1166710621160464386, 'string', '124234', 1, 'string', 'string', '2019-08-28 21:54:23', '2019-09-21 00:01:35');
 create table user_role
 (
     user_id bigint not null comment '用户id',

@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.configuration;
+package net.mshome.twisted.tmall.aop.configuration;
 
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;

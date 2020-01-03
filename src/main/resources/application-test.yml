@@ -5,3 +5,13 @@ spring:
       username: tmall
       password: C1JiG51qZPnW5gYIAczJ1aPPF9sPkAvOofQGXor/ictrloCluSk4BYPSwkcx4lcN1DE58FcgPQD+yfRjs025YQ==
       public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIKMRMProkDVCg/TA0yR6/HRy2boGt6sE1rtYe7+v0svv5DUC5YF1RM0aLy+KV6hDh0c+yXq9HFl9WTOgNz+IUkCAwEAAQ==
+  redis:
+    host: redis.base-env
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 5ms
+        max-idle: 8
+        min-idle: 0
+    database: 1

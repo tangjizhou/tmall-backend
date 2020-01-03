@@ -35,9 +35,4 @@ public class PurchaseOrderItem extends BaseEntity implements Serializable {
 
     private BigDecimal dealPrice;
 
-    /**
-     * 0:交易失败,1:交易成功
-     */
-    private Integer state;
-
 }

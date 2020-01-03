@@ -1,6 +1,7 @@
-package net.mshome.twisted.tmall.handler.mybatis;
+package net.mshome.twisted.tmall.aop.handler.mybatis;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import net.mshome.twisted.tmall.enumeration.DataState;
 import org.apache.ibatis.reflection.MetaObject;
 
 import java.time.LocalDateTime;
@@ -17,7 +18,7 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         setIfAbsent("createTime", LocalDateTime.now(), metaObject);
         setIfAbsent("updateTime", LocalDateTime.now(), metaObject);
-
+        setIfAbsent("dataState", DataState.VALID, metaObject);
     }
 
     @Override

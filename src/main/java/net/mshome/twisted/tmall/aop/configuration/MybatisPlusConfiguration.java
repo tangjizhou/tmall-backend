@@ -1,8 +1,8 @@
-package net.mshome.twisted.tmall.configuration;
+package net.mshome.twisted.tmall.aop.configuration;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import net.mshome.twisted.tmall.handler.mybatis.MybatisPlusMetaObjectHandler;
-import net.mshome.twisted.tmall.interceptor.MybatisSqlInterceptor;
+import net.mshome.twisted.tmall.aop.handler.mybatis.MybatisPlusMetaObjectHandler;
+import net.mshome.twisted.tmall.aop.interceptor.MybatisSqlInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

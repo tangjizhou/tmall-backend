@@ -8,6 +8,7 @@ import net.mshome.twisted.tmall.enumeration.UserState;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>
@@ -35,5 +36,7 @@ public interface IUserService extends IService<User> {
     List<Role> listUserRoles(Long userId);
 
     List<UserQueryVO> listAll(String username, String realName, UserState userState);
+
+    Optional<User> getByUsername(String username);
 
 }

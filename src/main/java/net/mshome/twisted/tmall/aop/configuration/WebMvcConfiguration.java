@@ -1,6 +1,6 @@
-package net.mshome.twisted.tmall.configuration;
+package net.mshome.twisted.tmall.aop.configuration;
 
-import net.mshome.twisted.tmall.handler.ReturnValueHandler;
+import net.mshome.twisted.tmall.aop.handler.ReturnValueHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;

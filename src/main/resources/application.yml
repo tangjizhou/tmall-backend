@@ -23,20 +23,17 @@ spring:
     name: tmall-service
   profiles:
     active: ${ACTIVE_PROFILE:default}
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#    jedis:
-#      pool:
-#        max-active: 8
-#        max-wait: 5ms
-#        max-idle: 8
-#        min-idle: 0
+  session:
+    store-type: redis
+    redis:
+      namespace: spring:session:tmall
+    timeout: 180000
+
 mybatis-plus:
   type-enums-package: net.mshome.twisted.tmall.enumeration
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-  type-handlers-package: net.mshome.twisted.tmall.handler.mybatis
+  type-handlers-package: net.mshome.twisted.tmall.aop.handler.mybatis
   mapper-locations: classpath:mapper/*Mapper.xml
 
 tmall:

@@ -1,6 +1,6 @@
-package net.mshome.twisted.tmall.configuration;
+package net.mshome.twisted.tmall.aop.configuration;
 
-import net.mshome.twisted.tmall.interceptor.LoginInterceptor;
+import net.mshome.twisted.tmall.aop.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

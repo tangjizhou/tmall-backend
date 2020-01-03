@@ -10,10 +10,12 @@ import net.mshome.twisted.tmall.mapper.UserMapper;
 import net.mshome.twisted.tmall.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>
@@ -47,6 +49,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public List<UserQueryVO> listAll(String username, String realName, UserState userState) {
         return baseMapper.listAll(username, realName, userState == null ? null : userState.getValue());
+    }
+
+    @Override
+    public Optional<User> getByUsername(String username) {
+        if (StringUtils.isEmpty(username)) {
+            return Optional.empty();
+        }
+        var where = new QueryWrapper<>(User.builder().username(username).build());
+        return Optional.of(getOne(where));
     }
 
 }

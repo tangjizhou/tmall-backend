@@ -1,15 +1,16 @@
 package net.mshome.twisted.tmall.entity;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author tangjizhouchn@foxmail.com
@@ -20,16 +21,11 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class PurchaseOrder extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     private Integer userId;
 
     private BigDecimal totalPrice;
-
-    /**
-     * 0:取消,10:已创建,20:已付款,30:已发货,40:运送中,50:派送中,60:已完成
-     */
-    private Integer state;
 
     private String address;
 

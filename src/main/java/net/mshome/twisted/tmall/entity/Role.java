@@ -1,10 +1,10 @@
 package net.mshome.twisted.tmall.entity;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -19,16 +19,13 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Role extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 角色名
      */
-    private String roleName;
+    private String code;
 
-    /**
-     * 状态:1:正常,0:禁用
-     */
-    private Boolean state;
+    private String name;
 
 }

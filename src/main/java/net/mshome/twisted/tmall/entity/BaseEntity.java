@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.mshome.twisted.tmall.enumeration.DataState;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -35,6 +36,13 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty(hidden = true)
     @JsonSerialize(using = ToStringSerializer.class)
     protected Long id;
+
+    /**
+     * 数据状态
+     */
+    @TableField(fill = FieldFill.INSERT)
+    @ApiModelProperty(hidden = true)
+    private DataState dataState;
 
     /**
      * 数据创建时间

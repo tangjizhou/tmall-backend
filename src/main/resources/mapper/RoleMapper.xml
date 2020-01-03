@@ -2,4 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.mshome.twisted.tmall.mapper.RoleMapper">
 
+    <select id="selectCodesByUsername" resultType="java.lang.String">
+        select code
+        from role join user_role ur on role.id = ur.role_id
+        where user_id = #{userId}
+          and data_state = ${dataState}
+    </select>
 </mapper>

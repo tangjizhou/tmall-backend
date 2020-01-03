@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.mshome.twisted.tmall.enumeration.DataState;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -30,11 +31,6 @@ public class Product extends BaseEntity implements Serializable {
     private String name;
 
     private Integer categoryId;
-
-    /**
-     * 0:无效,1:有效,9:封杀
-     */
-    private Integer state;
 
     private String briefIntroduction;
 

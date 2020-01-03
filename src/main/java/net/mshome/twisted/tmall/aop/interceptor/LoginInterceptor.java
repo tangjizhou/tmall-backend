@@ -1,7 +1,5 @@
-package net.mshome.twisted.tmall.interceptor;
+package net.mshome.twisted.tmall.aop.interceptor;
 
-import net.mshome.twisted.tmall.constant.SessionConstant;
-import net.mshome.twisted.tmall.entity.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
