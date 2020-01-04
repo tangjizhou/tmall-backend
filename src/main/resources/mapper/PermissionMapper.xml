@@ -7,6 +7,6 @@
         <foreach collection="roles" open="(" close=")" separator="," item="role">
             #{role}
         </foreach>
-        and data_state = ${dataState}
+        and data_state = #{dataState}
     </select>
 </mapper>

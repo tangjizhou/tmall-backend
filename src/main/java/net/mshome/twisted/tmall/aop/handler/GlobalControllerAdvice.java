@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.mshome.twisted.tmall.common.ResultWrapper;
 import net.mshome.twisted.tmall.enumeration.ErrorCode;
 import net.mshome.twisted.tmall.exception.TmallException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.WebDataBinder;
@@ -22,8 +24,9 @@ import java.time.format.DateTimeFormatter;
  * @date 2019-08-18
  */
 @Slf4j
+@ResponseBody
 @ControllerAdvice
-@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+@ResponseStatus(value = HttpStatus.OK)
 public class GlobalControllerAdvice {
 
     @InitBinder
@@ -43,14 +46,13 @@ public class GlobalControllerAdvice {
     }
 
 
-    @ResponseBody
     @ExceptionHandler({TmallException.class})
     public ResultWrapper<String> handleTmallException(TmallException e, HttpServletRequest request) {
         log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);
         return ResultWrapper.<String>builder().code(e.getErrorCode()).message(e.getMessage()).build();
     }
 
-    @ResponseBody
+
     @ExceptionHandler({BindException.class})
     public ResultWrapper<String> handleBindException(BindException e, HttpServletRequest request) {
         log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);
@@ -58,15 +60,14 @@ public class GlobalControllerAdvice {
                 .message(e.getBindingResult().toString()).build();
     }
 
-    @ResponseBody
-    @ExceptionHandler({IllegalArgumentException.class})
-    public ResultWrapper<String> handleIllegalArgumentException(IllegalArgumentException e, HttpServletRequest request) {
+    @ExceptionHandler({IllegalArgumentException.class, UnknownAccountException.class, UnauthenticatedException.class})
+    public ResultWrapper<String> handleRuntimeException(RuntimeException e, HttpServletRequest request) {
         log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);
         return ResultWrapper.<String>builder().code(ErrorCode.BAD_REQUEST.getValue())
                 .message(e.getMessage()).build();
     }
 
-    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler({Exception.class})
     public ResultWrapper<String> handleException(Exception e, HttpServletRequest request) {
         log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);

@@ -5,20 +5,17 @@ import net.mshome.twisted.tmall.enumeration.DataState;
 import net.mshome.twisted.tmall.service.IPermissionService;
 import net.mshome.twisted.tmall.service.IRoleService;
 import net.mshome.twisted.tmall.service.IUserService;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.apache.shiro.util.Assert;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -55,19 +52,20 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        if (Objects.isNull(token.getPrincipal())) {
-            return null;
-        }
-        String username = (String) token.getPrincipal();
-        User user = userService.getByUsername(username).orElse(null);
-        if (Objects.isNull(user)) {
-            return null;
-        }
+        UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
+        String username = usernamePasswordToken.getUsername();
+        Assert.notNull(username, "请输入用户名");
+        User user = userService.getByUsername(username).orElseThrow(() -> new UnknownAccountException("用户不存在"));
         SimpleAuthenticationInfo authorizationInfo = new SimpleAuthenticationInfo();
         authorizationInfo.setPrincipals(new SimplePrincipalCollection(username, getName()));
         authorizationInfo.setCredentialsSalt(ByteSource.Util.bytes(username));
         authorizationInfo.setCredentials(user.getPassword());
         return authorizationInfo;
+    }
+
+    @Override
+    public String getName() {
+        return "Tmall-User-Realm";
     }
 
 }

@@ -11,6 +11,8 @@ import net.mshome.twisted.tmall.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authc.credential.PasswordMatcher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -28,12 +30,16 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
+    @Autowired
+    private PasswordMatcher passwordMatcher;
+
     @Override
     public void register(UserAddDTO userAddDTO) {
         String username = userAddDTO.getUsername();
+        String password = passwordMatcher.getPasswordService().encryptPassword(userAddDTO.getPassword());
         int count = baseMapper.selectCount(new QueryWrapper<>(User.builder().username(username).build()));
         Preconditions.checkArgument(count == 0, "用户%s已存在", username);
-        User user = User.builder().username(username).password(userAddDTO.getPassword())
+        User user = User.builder().username(username).password(password)
                 .address(userAddDTO.getAddress()).realName(userAddDTO.getRealName()).build();
         baseMapper.insert(user);
     }
@@ -57,7 +63,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return Optional.empty();
         }
         var where = new QueryWrapper<>(User.builder().username(username).build());
-        return Optional.of(getOne(where));
+        return Optional.ofNullable(getOne(where));
     }
 
 }

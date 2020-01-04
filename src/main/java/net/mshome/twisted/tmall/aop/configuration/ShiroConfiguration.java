@@ -1,13 +1,12 @@
 package net.mshome.twisted.tmall.aop.configuration;
 
 import net.mshome.twisted.tmall.common.UserRealm;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.credential.PasswordMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +51,9 @@ public class ShiroConfiguration {
 
 
     @Bean
-    public UserRealm userRealm(CacheManager cacheManager, HashedCredentialsMatcher credentialsMatcher) {
+    public UserRealm userRealm(CacheManager cacheManager, PasswordMatcher passwordMatcher) {
         UserRealm userRealm = new UserRealm();
-        userRealm.setCredentialsMatcher(credentialsMatcher);
+        userRealm.setCredentialsMatcher(passwordMatcher);
         userRealm.setCachingEnabled(true);
         userRealm.setCacheManager(cacheManager);
         return userRealm;
@@ -81,6 +80,7 @@ public class ShiroConfiguration {
                     }
 
                     @Override
+                    @SuppressWarnings("unchecked")
                     public V get(K k) throws CacheException {
                         return (V) redisTemplate.opsForValue().get(getCacheKey(k));
                     }
@@ -124,11 +124,8 @@ public class ShiroConfiguration {
 
 
     @Bean
-    public HashedCredentialsMatcher hashedCredentialsMatcher() {
-        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-        hashedCredentialsMatcher.setHashAlgorithmName("MD5");
-        hashedCredentialsMatcher.setHashIterations(7);
-        return hashedCredentialsMatcher;
+    public PasswordMatcher passwordMatcher() {
+        return new PasswordMatcher();
     }
 
 }

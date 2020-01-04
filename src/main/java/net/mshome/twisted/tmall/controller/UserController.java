@@ -7,6 +7,9 @@ import net.mshome.twisted.tmall.enumeration.UserState;
 import net.mshome.twisted.tmall.service.IUserService;
 import net.mshome.twisted.tmall.vo.UserStateVO;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.credential.PasswordMatcher;
+import org.apache.shiro.authc.credential.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -33,11 +36,7 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @PostMapping("/login")
-    public void login(HttpServletRequest request, HttpServletResponse response,
-                      @RequestBody UserLoginDTO userLoginDTO) throws Exception {
 
-    }
 
 
     @PostMapping("/register")
