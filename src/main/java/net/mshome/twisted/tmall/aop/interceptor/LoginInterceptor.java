@@ -1,11 +1,15 @@
 package net.mshome.twisted.tmall.aop.interceptor;
 
+import net.mshome.twisted.tmall.constant.SessionConstant;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 /**
  * 用户登陆拦截
@@ -16,16 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-        //String currentUrl = request.getRequestURL().toString();
-        //User user = (User) request.getSession().getAttribute(SessionConstant.USER_SESSION_KEY);
-        //if (user == null) {
-        //    response.sendRedirect("/user/loginPage");
-        //    return false;
-        //}
-
+        HttpSession session = request.getSession(true);
+        if (Objects.isNull(session.getAttribute(SessionConstant.USER_SESSION_KEY))) {
+            throw new UnauthenticatedException("用户未登陆或登陆过期");
+        }
         return true;
     }
 

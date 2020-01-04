@@ -22,7 +22,7 @@ public class InterceptorConfiguration extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**")
-                .excludePathPatterns("/user/login", "/use/logout")
+                .excludePathPatterns("/auth/login", "/auth/logout")
                 .excludePathPatterns("swagger-ui.html", "/v2/api-docs", "/webjars/**");
     }
 

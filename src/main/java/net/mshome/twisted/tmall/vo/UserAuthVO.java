@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -17,8 +18,9 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserAuthVO {
+public class UserAuthVO implements Serializable {
 
+    private static final long serialVersionUID = 8454640483367336284L;
     private String username;
     private String realName;
     private Set<String> roles;
