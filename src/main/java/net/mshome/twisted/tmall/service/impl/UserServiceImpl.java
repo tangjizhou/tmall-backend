@@ -5,7 +5,7 @@ import com.google.common.base.Preconditions;
 import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
-import net.mshome.twisted.tmall.enumeration.UserState;
+import net.mshome.twisted.tmall.enumeration.DataState;
 import net.mshome.twisted.tmall.mapper.UserMapper;
 import net.mshome.twisted.tmall.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -53,8 +53,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public List<UserQueryVO> listAll(String username, String realName, UserState userState) {
-        return baseMapper.listAll(username, realName, userState == null ? null : userState.getValue());
+    public List<UserQueryVO> listAll(String username, String realName, DataState dataState) {
+        return baseMapper.listAll(username, realName, dataState == null ? null : dataState.getValue());
     }
 
     @Override

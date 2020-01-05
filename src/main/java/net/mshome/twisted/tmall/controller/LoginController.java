@@ -73,14 +73,9 @@ public class LoginController {
     }
 
     @PostMapping("/logout")
-    public void logout(HttpServletRequest request, HttpServletResponse response) {
+    public void logout(HttpServletRequest request) {
         SecurityUtils.getSubject().logout();
         request.getSession().invalidate();
-        try {
-            response.sendRedirect("/");
-        } catch (IOException e) {
-            log.warn("用户退出时重定向出错", e);
-        }
     }
 
 }

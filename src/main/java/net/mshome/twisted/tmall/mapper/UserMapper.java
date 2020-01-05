@@ -45,6 +45,6 @@ public interface UserMapper extends BaseMapper<User> {
      * @return 用户信息
      */
     List<UserQueryVO> listAll(@Param("username") String username, @Param("realName") String realName,
-                              @Param("state") Integer state);
+                              @Param("state") String state);
 
 }

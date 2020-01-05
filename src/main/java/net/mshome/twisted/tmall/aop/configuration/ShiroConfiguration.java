@@ -1,10 +1,12 @@
 package net.mshome.twisted.tmall.aop.configuration;
 
 import net.mshome.twisted.tmall.common.UserRealm;
+import org.apache.shiro.authc.credential.DefaultPasswordService;
 import org.apache.shiro.authc.credential.PasswordMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.crypto.hash.DefaultHashService;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -127,7 +129,15 @@ public class ShiroConfiguration {
 
     @Bean
     public PasswordMatcher passwordMatcher() {
-        return new PasswordMatcher();
+        DefaultPasswordService passwordService = new DefaultPasswordService();
+        DefaultHashService hashService = new DefaultHashService();
+        hashService.setHashIterations(5);
+        hashService.setGeneratePublicSalt(true);
+        hashService.setHashAlgorithmName(DefaultPasswordService.DEFAULT_HASH_ALGORITHM);
+        passwordService.setHashService(hashService);
+        PasswordMatcher passwordMatcher = new PasswordMatcher();
+        passwordMatcher.setPasswordService(passwordService);
+        return passwordMatcher;
     }
 
     @Bean

@@ -3,6 +3,7 @@ package net.mshome.twisted.tmall.controller;
 
 import net.mshome.twisted.tmall.dto.UserAddDTO;
 import net.mshome.twisted.tmall.dto.UserLoginDTO;
+import net.mshome.twisted.tmall.enumeration.DataState;
 import net.mshome.twisted.tmall.enumeration.UserState;
 import net.mshome.twisted.tmall.service.IUserService;
 import net.mshome.twisted.tmall.vo.UserStateVO;
@@ -36,9 +37,6 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-
-
-
     @PostMapping("/register")
     public void register(@RequestBody @Validated UserAddDTO userAddDTO) {
         userService.register(userAddDTO);
@@ -46,8 +44,8 @@ public class UserController {
 
     @GetMapping("/listAll")
     public List<UserQueryVO> listAll(@RequestParam String username, @RequestParam String realName,
-                                     @RequestParam UserState userState) {
-        return userService.listAll(username, realName, userState);
+                                     @RequestParam DataState dataState) {
+        return userService.listAll(username, realName, dataState);
     }
 
     @GetMapping("/listUserSates")

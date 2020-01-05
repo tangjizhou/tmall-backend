@@ -48,21 +48,21 @@ public class GlobalControllerAdvice {
 
     @ExceptionHandler({TmallException.class})
     public ResultWrapper<String> handleTmallException(TmallException e, HttpServletRequest request) {
-        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);
+        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()));
         return ResultWrapper.<String>builder().code(e.getErrorCode()).message(e.getMessage()).build();
     }
 
 
     @ExceptionHandler({BindException.class})
     public ResultWrapper<String> handleBindException(BindException e, HttpServletRequest request) {
-        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);
+        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()));
         return ResultWrapper.<String>builder().code(ErrorCode.BAD_REQUEST.getValue())
                 .message(e.getBindingResult().toString()).build();
     }
 
     @ExceptionHandler({IllegalArgumentException.class, UnknownAccountException.class, UnauthenticatedException.class})
     public ResultWrapper<String> handleRuntimeException(RuntimeException e, HttpServletRequest request) {
-        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()), e);
+        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()));
         return ResultWrapper.<String>builder().code(ErrorCode.BAD_REQUEST.getValue())
                 .message(e.getMessage()).build();
     }
