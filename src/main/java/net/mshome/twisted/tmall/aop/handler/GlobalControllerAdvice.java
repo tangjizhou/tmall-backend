@@ -60,10 +60,17 @@ public class GlobalControllerAdvice {
                 .message(e.getBindingResult().toString()).build();
     }
 
-    @ExceptionHandler({IllegalArgumentException.class, UnknownAccountException.class, UnauthenticatedException.class})
-    public ResultWrapper<String> handleRuntimeException(RuntimeException e, HttpServletRequest request) {
+    @ExceptionHandler({IllegalArgumentException.class})
+    public ResultWrapper<String> handleIllegalArgumentException(IllegalArgumentException e, HttpServletRequest request) {
         log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()));
         return ResultWrapper.<String>builder().code(ErrorCode.BAD_REQUEST.getValue())
+                .message(e.getMessage()).build();
+    }
+
+    @ExceptionHandler({UnknownAccountException.class, UnauthenticatedException.class})
+    public ResultWrapper<String> handleShiroException(RuntimeException e, HttpServletRequest request) {
+        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()));
+        return ResultWrapper.<String>builder().code(ErrorCode.NOT_LOGIN.getValue())
                 .message(e.getMessage()).build();
     }
 

@@ -8,9 +8,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
+ * 修改密码请求参数
+ *
  * @author tangjizhouchn@foxmail.com
  * @date 2019-08-25
- * @description 修改密码请求参数
  */
 @Data
 @NoArgsConstructor

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.mshome.twisted.tmall.enumeration.DataState;
-import net.mshome.twisted.tmall.enumeration.UserState;
 
 import java.time.LocalDateTime;
 
