@@ -8,6 +8,7 @@ import net.mshome.twisted.tmall.entity.Product;
 import net.mshome.twisted.tmall.service.IProductService;
 import org.apache.commons.lang3.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class ProductImportListener extends AnalysisEventListener<ProductSheetMod
             // 校验数据合法性
             List<String> cellErrorMsgList = new ArrayList<>(List.of(errorMsgPrefix));
             addCellErrorMsg(cellErrorMsgList, StringUtils.isNotBlank(sheetModel.getName()), "产品名称不能为空");
-            addCellErrorMsg(cellErrorMsgList, sheetModel.getPromotePrice().doubleValue() != 0.0d, "产品价格不能为0");
+            addCellErrorMsg(cellErrorMsgList, BigDecimal.ZERO.compareTo(sheetModel.getPromotePrice()) != 0, "产品价格不能为0");
             String rowErrorMsg = String.join(",", cellErrorMsgList);
 
             if (rowErrorMsg.equals(errorMsgPrefix)) {

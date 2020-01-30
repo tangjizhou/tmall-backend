@@ -1,7 +1,7 @@
 package net.mshome.twisted.tmall.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import net.mshome.twisted.tmall.constant.SessionConstant;
+import net.mshome.twisted.tmall.constant.SessionConstants;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.service.IPermissionService;
 import net.mshome.twisted.tmall.service.IRoleService;
@@ -19,9 +19,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.Optional;
 import java.util.Set;
 
@@ -67,8 +65,9 @@ public class LoginController {
         String realName = userOptional.map(User::getRealName).orElse("小白");
         Set<String> roles = roleService.listCodesByUserId(userId);
         Set<String> permissions = permissionService.listCodesByRoles(roles);
-        UserAuthVO userAuthVO = UserAuthVO.builder().username(username).realName(realName).roles(roles).permissions(permissions).build();
-        session.setAttribute(SessionConstant.USER_SESSION_KEY, userAuthVO);
+        UserAuthVO userAuthVO = UserAuthVO.builder().username(username).realName(realName)
+                .roles(roles).permissions(permissions).build();
+        session.setAttribute(SessionConstants.USER_SESSION_KEY, userAuthVO);
         return userAuthVO;
     }
 

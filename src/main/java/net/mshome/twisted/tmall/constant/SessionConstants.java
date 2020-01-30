@@ -6,7 +6,7 @@ package net.mshome.twisted.tmall.constant;
  * @author tangjizhouchn@foxmail.com
  * @date 2019/8/28
  */
-public final class SessionConstant {
+public final class SessionConstants {
 
     public static final String USER_SESSION_KEY = "_USER_SESSION_KEY_";
 
