@@ -14,7 +14,6 @@ import net.mshome.twisted.tmall.exception.TmallException;
 import net.mshome.twisted.tmall.service.IProductService;
 import net.mshome.twisted.tmall.service.excel.ProductExportHandler;
 import net.mshome.twisted.tmall.service.excel.ProductImportListener;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.util.Assert;
@@ -51,7 +50,7 @@ public class ProductController {
 
     @ApiOperation("查询产品")
     @GetMapping("/list")
-    @RequiresPermissions("admin")
+    // @RequiresPermissions("admin")
     public IPage<Product> listProducts() {
         IPage<Product> page = new Page<>(1, 10, 10);
         return productService.page(page, new QueryWrapper<>());
