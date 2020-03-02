@@ -23,7 +23,7 @@ public class Product extends BaseEntity implements Serializable {
     /**
      * 名称
      */
-    @PermissionControlled(include = "test")
+    @PermissionControlled(include = "test", defaultValue = "123")
     private String name;
 
     private Integer categoryId;
