@@ -29,6 +29,17 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class TmallConfiguration {
 
+    @Autowired
+    private MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter;
+
+    @PostConstruct
+    public void init() {
+        ObjectMapper objectMapper = mappingJackson2HttpMessageConverter.getObjectMapper();
+        objectMapper.setSerializerFactory(objectMapper.getSerializerFactory()
+                .withSerializerModifier(new TmallBeanSerializeModifier()));
+    }
+
+
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer builderCustomizer() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -41,16 +52,6 @@ public class TmallConfiguration {
             builder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer(dateTimeSerializeFormatter));
             builder.deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer(dateTimeDeserializeFormatter));
         };
-    }
-
-    @Autowired
-    private MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter;
-
-    @PostConstruct
-    public void init() {
-        ObjectMapper objectMapper = mappingJackson2HttpMessageConverter.getObjectMapper();
-        objectMapper.setSerializerFactory(objectMapper.getSerializerFactory()
-                .withSerializerModifier(new TmallBeanSerializeModifier()));
     }
 
 
