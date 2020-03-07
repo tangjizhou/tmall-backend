@@ -21,15 +21,9 @@ import java.util.stream.Collectors;
  */
 public class UserFieldValidator implements ConstraintValidator<UsersField, String> {
 
-    private static String DEFAULT_MESSAGE;
 
     @Autowired
     private IUserService userService;
-
-    @Override
-    public void initialize(UsersField constraintAnnotation) {
-        DEFAULT_MESSAGE = UsersField.DEFAULT_MESSAGE;
-    }
 
     @Override
     public boolean isValid(String usernames, ConstraintValidatorContext context) {
@@ -51,7 +45,7 @@ public class UserFieldValidator implements ConstraintValidator<UsersField, Strin
 
         context.disableDefaultConstraintViolation();
         String messageTemplate = context.getDefaultConstraintMessageTemplate();
-        messageTemplate = StringUtils.isBlank(messageTemplate) ? DEFAULT_MESSAGE : messageTemplate;
+        messageTemplate = StringUtils.isBlank(messageTemplate) ? UsersField.DEFAULT_MESSAGE : messageTemplate;
         context.buildConstraintViolationWithTemplate(StringUtils.replace(messageTemplate, "{}", invalidUsers))
                 .addConstraintViolation();
         return false;
