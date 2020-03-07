@@ -1,10 +1,11 @@
 package net.mshome.twisted.tmall.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import net.mshome.twisted.tmall.dto.UserAddDTO;
+import net.mshome.twisted.tmall.dto.UserQueryDTO;
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
-import com.baomidou.mybatisplus.extension.service.IService;
-import net.mshome.twisted.tmall.enumeration.DataState;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
 
 import java.util.List;
@@ -35,8 +36,8 @@ public interface IUserService extends IService<User> {
      */
     List<Role> listUserRoles(Long userId);
 
-    List<UserQueryVO> listAll(String username, String realName, DataState dataState);
-
     Optional<User> getByUsername(String username);
+
+    Page<UserQueryVO> listByExample(UserQueryDTO queryDTO);
 
 }

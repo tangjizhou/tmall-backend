@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
 
 /**
+ * 新增用户参数
+ *
  * @author tangjizhouchn@foxmail.com
- * @date 2019-08-18
- * @description 新增用户参数
+ * @since 2019-08-18
  */
 @Data
 @NoArgsConstructor

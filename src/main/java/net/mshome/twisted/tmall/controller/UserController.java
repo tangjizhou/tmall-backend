@@ -1,15 +1,14 @@
 package net.mshome.twisted.tmall.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import net.mshome.twisted.tmall.dto.UserAddDTO;
-import net.mshome.twisted.tmall.enumeration.DataState;
+import net.mshome.twisted.tmall.dto.UserQueryDTO;
 import net.mshome.twisted.tmall.service.IUserService;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * <p>
@@ -32,10 +31,9 @@ public class UserController {
         userService.register(userAddDTO);
     }
 
-    @GetMapping("/listAll")
-    public List<UserQueryVO> listAll(@RequestParam String username, @RequestParam String realName,
-                                     @RequestParam DataState dataState) {
-        return userService.listAll(username, realName, dataState);
+    @GetMapping("/list")
+    public Page<UserQueryVO> queryByExample(UserQueryDTO queryDTO) {
+        return userService.listByExample(queryDTO);
     }
 
 }

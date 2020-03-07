@@ -12,10 +12,11 @@ import net.mshome.twisted.tmall.annotation.PermissionControlled;
 import net.mshome.twisted.tmall.annotation.PermissionControlledValueSupplier;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.springframework.cglib.core.ReflectUtils;
+import org.springframework.beans.BeanUtils;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -71,6 +72,7 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
             Subject subject = SecurityUtils.getSubject();
             String[] include = controlled.include();
             String[] exclude = controlled.exclude();
+
             // 无用户，或者用户有权限，写入真实的值
             if (Objects.isNull(subject) || (!isExclude(subject, exclude) && isInclude(subject, include))) {
                 jsonGenerator.writeObject(o);
@@ -80,16 +82,16 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
             // 否则，打马赛克
             Class<? extends PermissionControlledValueSupplier> supplier = controlled.supplier();
             if (DefaultPermissionControlledValueSupplier.class != supplier) { // 配置了默认值提供者
-                jsonGenerator.writeObject(((PermissionControlledValueSupplier) ReflectUtils
-                        .newInstance(supplier)).supply());
+                jsonGenerator.writeObject(BeanUtils.instantiateClass(supplier).supply());
             } else if (!Objects.equals(PermissionControlled.NULL, controlled.defaultValue())) { // 配置了默认值String
                 jsonGenerator.writeString(controlled.defaultValue());
             } else if (propertyWriter.getType().isArrayType()) { // 如果数组类型则返回空数组
                 jsonGenerator.writeStartArray();
                 jsonGenerator.writeEndArray();
+            } else if (propertyWriter.getType().isCollectionLikeType()) { // 如果是集合则返回空集合
+                jsonGenerator.writeObject(Collections.emptyList());
             } else { // 否则执行默认的默认值提供者
-                jsonGenerator.writeObject(((PermissionControlledValueSupplier) ReflectUtils
-                        .newInstance(supplier)).supply());
+                jsonGenerator.writeObject(BeanUtils.instantiateClass(supplier).supply());
             }
 
         }
