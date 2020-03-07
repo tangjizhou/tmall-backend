@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.mshome.twisted.tmall.annotation.PermissionControlled;
+import net.mshome.twisted.tmall.constant.PermissionConstants;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.enumeration.DataState;
 import org.springframework.beans.BeanUtils;
@@ -25,7 +26,7 @@ public class UserQueryVO {
     private String username;
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     private DataState dataState;
-    @PermissionControlled(include = "admin", defaultValue = "--")
+    @PermissionControlled(include = PermissionConstants.USER_MANAGE, defaultValue = "--")
     private String realName;
     private String address;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")

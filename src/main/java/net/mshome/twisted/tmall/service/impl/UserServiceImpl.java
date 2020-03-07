@@ -12,6 +12,7 @@ import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.mapper.UserMapper;
 import net.mshome.twisted.tmall.service.IUserService;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.credential.PasswordMatcher;
 import org.springframework.beans.BeanUtils;
@@ -51,7 +52,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public List<Role> listUserRoles(Long userId) {
-        if (userId == null || userId == 0) {
+        if (Objects.isNull(userId) || userId == 0) {
             return Collections.emptyList();
         }
         return baseMapper.listUserRoles(userId);
@@ -59,7 +60,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public Optional<User> getByUsername(String username) {
-        if (StringUtils.isEmpty(username)) {
+        if (StringUtils.isBlank(username)) {
             return Optional.empty();
         }
         var where = new QueryWrapper<>(User.builder().username(username).build());
@@ -77,6 +78,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         BeanUtils.copyProperties(usersPage, voPage);
         return voPage.setRecords(usersPage.getRecords().stream().map(UserQueryVO::fromUser)
                 .collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<User> listByUsernames(List<String> usernames) {
+        if (CollectionUtils.isEmpty(usernames)) {
+            return Collections.emptyList();
+        }
+        var queryWrapper = new QueryWrapper<User>().in("username", usernames);
+        return list(queryWrapper).stream().distinct().collect(Collectors.toList());
     }
 
 }

@@ -40,4 +40,6 @@ public interface IUserService extends IService<User> {
 
     Page<UserQueryVO> listByExample(UserQueryDTO queryDTO);
 
+    List<User> listByUsernames(List<String> usernames);
+
 }

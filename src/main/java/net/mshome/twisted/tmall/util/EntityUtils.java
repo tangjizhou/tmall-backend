@@ -43,6 +43,9 @@ public class EntityUtils {
      * @return 以集合中对象的字段索引的对象map
      */
     public static <T, K> Map<K, T> indexElement(Collection<T> collection, Function<T, K> keyFunc) {
+        if (CollectionUtils.isEmpty(collection)) {
+            return Collections.emptyMap();
+        }
         return collection.stream().collect(Collectors.toMap(keyFunc, Function.identity()));
     }
 
@@ -59,6 +62,9 @@ public class EntityUtils {
      */
     public static <T, K, U> Map<K, U> indexElementField(Collection<T> collection, Function<T, K> keyFunc,
                                                         Function<T, U> valueFunc) {
+        if (CollectionUtils.isEmpty(collection)) {
+            return Collections.emptyMap();
+        }
         return collection.stream().collect(Collectors.toMap(keyFunc, valueFunc));
     }
 

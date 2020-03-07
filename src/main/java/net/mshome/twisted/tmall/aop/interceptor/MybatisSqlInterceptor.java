@@ -1,6 +1,5 @@
 package net.mshome.twisted.tmall.aop.interceptor;
 
-import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.enums.IEnum;
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -8,6 +7,7 @@ import com.baomidou.mybatisplus.extension.handlers.AbstractSqlParserHandler;
 import lombok.extern.slf4j.Slf4j;
 import net.mshome.twisted.tmall.entity.SqlLog;
 import net.mshome.twisted.tmall.service.ISqlLogService;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -99,7 +99,7 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
                 } else if (boundSql.hasAdditionalParameter(propertyName)) {
                     parameter = getParameterValue(boundSql.getAdditionalParameter(propertyName));
                 }
-                // fixme 此处不严谨，若sql语句中有❓，则替换错位。🤔️
+                // fixme 此处不严谨，若sql语句中有❓，则替换错位，encode一下就好。🤔️
                 sql = sql.replaceFirst("\\?", parameter);
             }
             // 将拦截到的sql语句插入日志表中
@@ -127,7 +127,7 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
         if (param instanceof String) {
             value = param.toString();
         } else if (param instanceof Date) {
-            DateUtil.format((Date) param, "yyyy-MM-dd HH:mm:ss");
+            DateFormatUtils.format((Date) param, "yyyy-MM-dd HH:mm:ss");
         } else if (param instanceof IEnum) {
             value = String.valueOf(((IEnum) param).getValue());
         } else {

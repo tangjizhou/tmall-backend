@@ -1,14 +1,15 @@
 package net.mshome.twisted.tmall.annotation;
 
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.service.IUserService;
+import net.mshome.twisted.tmall.util.EntityUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -32,23 +33,26 @@ public class UserFieldValidator implements ConstraintValidator<UsersField, Strin
 
     @Override
     public boolean isValid(String usernames, ConstraintValidatorContext context) {
-        if (StrUtil.isBlank(usernames)) {
+        if (StringUtils.isBlank(usernames)) {
             return true;
         }
 
-        String invalidUsers = Arrays.stream(usernames.split(",")).parallel().map(username -> {
-            int count = userService.count(new QueryWrapper<>(User.builder().username(username).build()));
-            return count == 0 ? username : null;
-        }).filter(Objects::nonNull).collect(Collectors.joining(","));
+        List<String> usernameList = List.of(usernames.split(","));
+        List<User> users = userService.listByUsernames(usernameList);
+        Map<String, User> userMap = EntityUtils.indexElement(users, User::getUsername);
 
-        if (StrUtil.isBlank(invalidUsers)) {
+        String invalidUsers = usernameList.stream()
+                .map(username -> Objects.isNull(userMap.get(usernames)) ? username : null)
+                .filter(Objects::nonNull).collect(Collectors.joining(","));
+
+        if (StringUtils.isBlank(invalidUsers)) {
             return true;
         }
 
         context.disableDefaultConstraintViolation();
         String messageTemplate = context.getDefaultConstraintMessageTemplate();
-        messageTemplate = StrUtil.isBlank(messageTemplate) ? DEFAULT_MESSAGE : messageTemplate;
-        context.buildConstraintViolationWithTemplate(StrUtil.replace(messageTemplate, "{}", invalidUsers))
+        messageTemplate = StringUtils.isBlank(messageTemplate) ? DEFAULT_MESSAGE : messageTemplate;
+        context.buildConstraintViolationWithTemplate(StringUtils.replace(messageTemplate, "{}", invalidUsers))
                 .addConstraintViolation();
         return false;
     }
