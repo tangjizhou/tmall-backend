@@ -40,8 +40,6 @@ public @interface PermissionControlled {
     /**
      * 自定义默认值提供者，优先级较{@link #defaultValue()}高
      */
-    Class<? extends PermissionControlledValueSupplier> supplier()
-            default DefaultPermissionControlledValueSupplier.class;
-
+    Class<? extends DefaultValueSupplier> supplier() default NullValueSupplier.class;
 
 }

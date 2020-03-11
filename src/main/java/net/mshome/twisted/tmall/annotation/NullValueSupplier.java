@@ -6,7 +6,7 @@ package net.mshome.twisted.tmall.annotation;
  * @author tangjizhouchn@foxmail.com
  * @date 2020/3/3
  */
-public class DefaultPermissionControlledValueSupplier implements PermissionControlledValueSupplier {
+public class NullValueSupplier implements DefaultValueSupplier {
 
     @Override
     public Object supply() {

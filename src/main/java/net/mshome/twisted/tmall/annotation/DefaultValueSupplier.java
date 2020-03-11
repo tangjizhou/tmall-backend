@@ -6,7 +6,7 @@ package net.mshome.twisted.tmall.annotation;
  * @author tangjizhouchn@foxmail.com
  * @date 2020/3/3
  */
-public interface PermissionControlledValueSupplier {
+public interface DefaultValueSupplier {
 
     Object supply();
 

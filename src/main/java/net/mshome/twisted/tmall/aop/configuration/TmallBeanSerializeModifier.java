@@ -7,9 +7,9 @@ import com.fasterxml.jackson.databind.SerializationConfig;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
 import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
-import net.mshome.twisted.tmall.annotation.DefaultPermissionControlledValueSupplier;
+import net.mshome.twisted.tmall.annotation.DefaultValueSupplier;
+import net.mshome.twisted.tmall.annotation.NullValueSupplier;
 import net.mshome.twisted.tmall.annotation.PermissionControlled;
-import net.mshome.twisted.tmall.annotation.PermissionControlledValueSupplier;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
@@ -46,7 +46,7 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
     @Override
     public List<BeanPropertyWriter> changeProperties(SerializationConfig config, BeanDescription beanDesc,
                                                      List<BeanPropertyWriter> beanProperties) {
-
+        // 将有权限控制注解的字段单独处理
         for (BeanPropertyWriter beanPropertyWriter : beanProperties) {
             PermissionControlled controlled = beanPropertyWriter.findAnnotation(PermissionControlled.class);
             if (Objects.isNull(controlled) || (controlled.include().length == 0 && controlled.exclude().length == 0)) {
@@ -61,6 +61,8 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
 
         private BeanPropertyWriter propertyWriter;
 
+        private static final NullValueSupplier DEFAULT_VALUE_SUPPLIER = new NullValueSupplier();
+
         public PermissionControlledJsonSerializer(BeanPropertyWriter propertyWriter) {
             this.propertyWriter = propertyWriter;
         }
@@ -73,15 +75,21 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
             String[] include = controlled.include();
             String[] exclude = controlled.exclude();
 
-            // 无用户，或者用户有权限，写入真实的值
-            if (Objects.isNull(subject) || (!isExclude(subject, exclude) && isInclude(subject, include))) {
+            // 无用户,敏感数据，直接打码
+            if (Objects.isNull(subject)) {
+                jsonGenerator.writeNull();
+                return;
+            }
+
+            // 有权限则写入真实的值
+            if (!isExclude(subject, exclude) && isInclude(subject, include)) {
                 jsonGenerator.writeObject(o);
                 return;
             }
 
             // 否则，打马赛克
-            Class<? extends PermissionControlledValueSupplier> supplier = controlled.supplier();
-            if (DefaultPermissionControlledValueSupplier.class != supplier) { // 配置了默认值提供者
+            Class<? extends DefaultValueSupplier> supplier = controlled.supplier();
+            if (NullValueSupplier.class != supplier) { // 配置了默认值提供者
                 jsonGenerator.writeObject(BeanUtils.instantiateClass(supplier).supply());
             } else if (!Objects.equals(PermissionControlled.NULL, controlled.defaultValue())) { // 配置了默认值String
                 jsonGenerator.writeString(controlled.defaultValue());
@@ -91,7 +99,7 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
             } else if (propertyWriter.getType().isCollectionLikeType()) { // 如果是集合则返回空集合
                 jsonGenerator.writeObject(Collections.emptyList());
             } else { // 否则执行默认的默认值提供者
-                jsonGenerator.writeObject(BeanUtils.instantiateClass(supplier).supply());
+                jsonGenerator.writeObject(DEFAULT_VALUE_SUPPLIER.supply());
             }
 
         }
