@@ -28,22 +28,22 @@ import java.math.BigDecimal;
 public class ProductSheetModel {
 
     @ColumnWidth(0)
-    @ExcelProperty(value = "ID", index = 0)
+    @ExcelProperty(value = "ID")
     private Long id;
 
-    @ExcelProperty(value = "名称", index = 1)
+    @ExcelProperty(value = "名称")
     private String name;
 
-    @ExcelProperty(value = "简要描述", index = 2)
+    @ExcelProperty(value = "简要描述")
     private String briefIntroduction;
 
-    @ExcelProperty(value = "详细描述", index = 3)
+    @ExcelProperty(value = "详细描述")
     private String detailIntroduction;
 
-    @ExcelProperty(value = "原价", index = 4)
+    @ExcelProperty(value = "原价")
     private BigDecimal originalPrice;
 
-    @ExcelProperty(value = "促销价", index = 5)
+    @ExcelProperty(value = "促销价")
     private BigDecimal promotePrice;
 
     public static ProductSheetModel from(Product product) {

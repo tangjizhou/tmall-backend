@@ -27,7 +27,7 @@ public enum ErrorCode implements IEnum<Integer> {
     SERVER_INTERNAL_ERROR(5000);
 
 
-    Integer value;
+    private Integer value;
 
     ErrorCode(Integer value) {
         this.value = value;
