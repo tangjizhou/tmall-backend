@@ -33,7 +33,7 @@ public class UserFieldValidator implements ConstraintValidator<UsersField, Strin
 
         List<String> usernameList = List.of(usernames.split(","));
         List<User> users = userService.listByUsernames(usernameList);
-        Map<String, User> userMap = EntityUtils.indexElement(users, User::getUsername);
+        Map<String, User> userMap = EntityUtils.listToMap(users, User::getUsername);
 
         String invalidUsers = usernameList.stream()
                 .map(username -> Objects.isNull(userMap.get(usernames)) ? username : null)

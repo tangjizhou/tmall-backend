@@ -42,7 +42,7 @@ public class EntityUtils {
      * @param <K>        key类型
      * @return 以集合中对象的字段索引的对象map
      */
-    public static <T, K> Map<K, T> indexElement(Collection<T> collection, Function<T, K> keyFunc) {
+    public static <T, K> Map<K, T> listToMap(Collection<T> collection, Function<T, K> keyFunc) {
         if (CollectionUtils.isEmpty(collection)) {
             return Collections.emptyMap();
         }
@@ -60,12 +60,28 @@ public class EntityUtils {
      * @param <U>        值类型
      * @return 索引的map
      */
-    public static <T, K, U> Map<K, U> indexElementField(Collection<T> collection, Function<T, K> keyFunc,
-                                                        Function<T, U> valueFunc) {
+    public static <T, K, U> Map<K, U> listToMap(Collection<T> collection, Function<T, K> keyFunc,
+                                                Function<T, U> valueFunc) {
         if (CollectionUtils.isEmpty(collection)) {
             return Collections.emptyMap();
         }
         return collection.stream().collect(Collectors.toMap(keyFunc, valueFunc));
+    }
+
+    /**
+     * 转换List中的类型
+     *
+     * @param list        输入List
+     * @param convertFunc 转换方法
+     * @param <T>         输入类型
+     * @param <K>         输出类型
+     * @return 转换后的List
+     */
+    public static <T, K> List<K> convert(Collection<T> list, Function<T, K> convertFunc) {
+        if (CollectionUtils.isEmpty(list)) {
+            return Collections.emptyList();
+        }
+        return list.stream().map(convertFunc).collect(Collectors.toList());
     }
 
 

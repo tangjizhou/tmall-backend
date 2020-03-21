@@ -11,6 +11,7 @@ import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.mapper.UserMapper;
 import net.mshome.twisted.tmall.service.IUserService;
+import net.mshome.twisted.tmall.util.EntityUtils;
 import net.mshome.twisted.tmall.vo.UserQueryVO;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -76,8 +77,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         IPage<User> usersPage = page(queryDTO.toPage(), queryWrapper);
         Page<UserQueryVO> voPage = queryDTO.toPage();
         BeanUtils.copyProperties(usersPage, voPage);
-        return voPage.setRecords(usersPage.getRecords().stream().map(UserQueryVO::fromUser)
-                .collect(Collectors.toList()));
+        return voPage.setRecords(EntityUtils.convert(usersPage.getRecords(), UserQueryVO::fromUser));
     }
 
     @Override
