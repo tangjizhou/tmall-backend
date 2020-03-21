@@ -46,7 +46,7 @@ public class EntityUtils {
         if (CollectionUtils.isEmpty(collection)) {
             return Collections.emptyMap();
         }
-        return collection.stream().collect(Collectors.toMap(keyFunc, Function.identity()));
+        return listToMap(collection, keyFunc, Function.identity());
     }
 
     /**
