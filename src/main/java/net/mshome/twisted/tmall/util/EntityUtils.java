@@ -30,7 +30,7 @@ public class EntityUtils {
         if (CollectionUtils.isEmpty(entities)) {
             return Collections.emptyList();
         }
-        return entities.stream().map(BaseEntity::getId).collect(Collectors.toList());
+        return convert(entities, BaseEntity::getId);
     }
 
     /**
