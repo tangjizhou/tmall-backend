@@ -1,11 +1,9 @@
 package net.mshome.twisted.tmall.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import net.mshome.twisted.tmall.entity.ProductCategory;
 import net.mshome.twisted.tmall.mapper.ProductCategoryMapper;
 import net.mshome.twisted.tmall.service.IProductCategoryService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
