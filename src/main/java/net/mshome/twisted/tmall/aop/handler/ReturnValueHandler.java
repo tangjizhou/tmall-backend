@@ -8,7 +8,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
@@ -18,12 +17,13 @@ import java.util.List;
 
 /**
  * 包装返回值,针对有mapping注解的方法返回的json数据包装
+ * 修改处理返回结果handler链表，在中间添加自定义handler
  *
  * @author tangjizhouchn@foxmail.com
  * @date 2019/9/4
  */
 @Component
-public class ReturnValueHandler extends RequestResponseBodyMethodProcessor implements HandlerMethodReturnValueHandler {
+public class ReturnValueHandler extends RequestResponseBodyMethodProcessor {
 
     public ReturnValueHandler(List<HttpMessageConverter<?>> converters) {
         super(converters);

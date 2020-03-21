@@ -62,7 +62,7 @@ public class LoginController {
         }
         Optional<User> userOptional = userService.getByUsername(username);
         Long userId = userOptional.map(User::getId).orElse(0L);
-        String realName = userOptional.map(User::getRealName).orElse("小白");
+        String realName = userOptional.map(User::getRealName).orElse("游客");
         Set<String> roles = roleService.listCodesByUserId(userId);
         Set<String> permissions = permissionService.listCodesByRoles(roles);
         UserAuthVO userAuthVO = UserAuthVO.builder().username(username).realName(realName)
