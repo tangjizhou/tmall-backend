@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.handlers.AbstractSqlParserHandler;
 import lombok.extern.slf4j.Slf4j;
-import net.mshome.twisted.tmall.entity.SqlLog;
 import net.mshome.twisted.tmall.service.ISqlLogService;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -103,7 +102,7 @@ public class MybatisSqlInterceptor extends AbstractSqlParserHandler implements I
                 sql = sql.replaceFirst("\\?", parameter);
             }
             // 将拦截到的sql语句插入日志表中
-            sqlLogService.save(SqlLog.builder().executedSql(sql).build());
+            // sqlLogService.save(SqlLog.builder().executedSql(sql).build());
         } catch (Exception e) {
             log.error(String.format("intercept sql error: [%s]", sql), e);
         }
