@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * 任务生成，通知审批人服务
@@ -32,9 +33,11 @@ public class TaskCreateNoticeService implements TaskExecutionService {
         Product product = (Product) execution.getVariable(VarDefinition.CHECK_IN_PRODUCT);
 
         // do something like sending an email to assignee of the task
-        SimpleEmailContext emailContext = SimpleEmailContext.builder().to(List.of("tangjizhouchn@foxmail.com"))
-                .subject("您有新的待办事项").content(product.toString()).build();
-        messageClient.send(emailContext);
+        CompletableFuture.runAsync(() -> {
+            SimpleEmailContext emailContext = SimpleEmailContext.builder().to(List.of("tangjizhouchn@foxmail.com"))
+                    .subject("您有新的待办事项").content(product.toString()).build();
+            messageClient.send(emailContext);
+        });
     }
 
 }

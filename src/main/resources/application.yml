@@ -18,11 +18,9 @@ spring:
           enabled: true
       connect-properties:
         config.decrypt: true
-        config.decrypt.key: ${spring.datasource.druid.public-key}
+        config.decrypt.key: ${spring.datasource.druid.connect-properties.public-key}
   application:
     name: tmall-service
-  profiles:
-    active: ${ACTIVE_PROFILE:default}
   session:
     store-type: redis
     redis:
