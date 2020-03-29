@@ -6,6 +6,7 @@ import net.mshome.twisted.tmall.process.ProcessExecutionService;
 import net.mshome.twisted.tmall.process.checkin.VarDefinition;
 import net.mshome.twisted.tmall.process.exception.ProcessExecuteException;
 import org.activiti.engine.delegate.DelegateExecution;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
+@Qualifier("CheckIn_ProcessStartCheckService")
 public class ProcessStartCheckService implements ProcessExecutionService {
 
     @Override

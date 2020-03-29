@@ -32,7 +32,6 @@ public class TaskCreateNoticeService implements TaskExecutionService {
         DelegateExecution execution = delegateTask.getExecution();
         Product product = (Product) execution.getVariable(VarDefinition.CHECK_IN_PRODUCT);
 
-        // do something like sending an email to assignee of the task
         CompletableFuture.runAsync(() -> {
             SimpleEmailContext emailContext = SimpleEmailContext.builder().to(List.of("tangjizhouchn@foxmail.com"))
                     .subject("您有新的待办事项").content(product.toString()).build();
