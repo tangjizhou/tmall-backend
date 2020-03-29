@@ -24,6 +24,7 @@ import java.util.Map;
 public class TmallGroupManagerImpl extends AbstractManager implements GroupEntityManager {
 
     private static final long serialVersionUID = -6836092804149039544L;
+    private static final String TYPE = "system_role";
 
     private IRoleService roleService;
 
@@ -84,7 +85,7 @@ public class TmallGroupManagerImpl extends AbstractManager implements GroupEntit
         GroupEntity groupEntity = new GroupEntityImpl();
         groupEntity.setName(role.getName());
         groupEntity.setId(role.getId().toString());
-        groupEntity.setType(role.getCode());
+        groupEntity.setType(TYPE);
         return groupEntity;
     }
 

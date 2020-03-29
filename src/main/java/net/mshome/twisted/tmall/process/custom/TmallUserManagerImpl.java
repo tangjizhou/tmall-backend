@@ -1,6 +1,5 @@
 package net.mshome.twisted.tmall.process.custom;
 
-import net.mshome.twisted.tmall.service.IRoleService;
 import net.mshome.twisted.tmall.service.IUserService;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.Picture;
@@ -28,8 +27,6 @@ public class TmallUserManagerImpl extends AbstractManager implements UserEntityM
     private static final long serialVersionUID = -6836092804149039544L;
 
     private IUserService userService;
-
-    private IRoleService roleService;
 
     public TmallUserManagerImpl(ProcessEngineConfigurationImpl processEngineConfiguration, IUserService userService) {
         super(processEngineConfiguration);
@@ -112,7 +109,8 @@ public class TmallUserManagerImpl extends AbstractManager implements UserEntityM
         net.mshome.twisted.tmall.entity.User user = userService.getById(s);
         UserEntity userEntity = new UserEntityImpl();
         userEntity.setId(user.getId().toString());
-        userEntity.setFirstName(user.getRealName());
+        userEntity.setFirstName(user.getRealName().substring(0, 1));
+        userEntity.setLastName(user.getRealName().substring(1));
         return userEntity;
     }
 
