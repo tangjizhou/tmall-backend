@@ -1,17 +1,22 @@
 package net.mshome.twisted.tmall.aop.configuration;
 
+import net.mshome.twisted.tmall.process.ProcessExecutionListener;
+import net.mshome.twisted.tmall.process.TaskExecutionListener;
 import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.activiti.spring.boot.ProcessEngineConfigurationConfigurer;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * TODO
+ * Activiti流程配置
  *
  * @author tangjizhouchn@foxmail.com
  * @since 2020/3/28
  */
 @Configuration
-public class ActivitiConfiguration implements ProcessEngineConfigurationConfigurer {
+public class ActivitiConfiguration implements ProcessEngineConfigurationConfigurer, ApplicationContextAware {
 
 
     @Override
@@ -20,5 +25,11 @@ public class ActivitiConfiguration implements ProcessEngineConfigurationConfigur
 
     }
 
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        ProcessExecutionListener.setApplicationContext(applicationContext);
+        TaskExecutionListener.setApplicationContext(applicationContext);
+    }
 
 }

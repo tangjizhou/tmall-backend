@@ -4,15 +4,8 @@ import net.mshome.twisted.tmall.process.exception.ProcessConfigureException;
 import org.activiti.engine.delegate.DelegateTask;
 import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.delegate.TaskListener;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -23,10 +16,7 @@ import java.util.Optional;
  * @author tangjizhouchn@foxmail.com
  * @since 2020/3/26
  */
-@Component
-@Transactional
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class TaskExecutionListener implements TaskListener, ApplicationContextAware {
+public class TaskExecutionListener implements TaskListener {
 
     private static final long serialVersionUID = -2124516767305918295L;
 
@@ -40,7 +30,7 @@ public class TaskExecutionListener implements TaskListener, ApplicationContextAw
     @Nullable
     private Expression param;
 
-    private ApplicationContext applicationContext;
+    private static ApplicationContext applicationContext;
 
 
     @Override
@@ -52,9 +42,8 @@ public class TaskExecutionListener implements TaskListener, ApplicationContextAw
         taskService.execute(delegateTask, param);
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+    public static void setApplicationContext(ApplicationContext applicationContext) {
+        TaskExecutionListener.applicationContext = applicationContext;
     }
 
 }

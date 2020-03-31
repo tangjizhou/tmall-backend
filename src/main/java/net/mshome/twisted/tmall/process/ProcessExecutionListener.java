@@ -4,15 +4,8 @@ import net.mshome.twisted.tmall.process.exception.ProcessConfigureException;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.delegate.Expression;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -23,10 +16,7 @@ import java.util.Optional;
  * @author tangjizhouchn@foxmail.com
  * @since 2020/3/26
  */
-@Service
-@Transactional
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class ProcessExecutionListener implements ExecutionListener, ApplicationContextAware {
+public class ProcessExecutionListener implements ExecutionListener {
 
     private static final long serialVersionUID = -5515141996381435746L;
 
@@ -40,7 +30,7 @@ public class ProcessExecutionListener implements ExecutionListener, ApplicationC
     @Nullable
     private Expression param;
 
-    private ApplicationContext applicationContext;
+    private static ApplicationContext applicationContext;
 
 
     @Override
@@ -52,9 +42,8 @@ public class ProcessExecutionListener implements ExecutionListener, ApplicationC
         executionService.execute(delegateExecution, param);
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+    public static void setApplicationContext(ApplicationContext applicationContext) {
+        ProcessExecutionListener.applicationContext = applicationContext;
     }
 
 }
