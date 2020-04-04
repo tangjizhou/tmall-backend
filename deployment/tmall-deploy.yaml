@@ -20,7 +20,7 @@ spec:
           ports:
             - containerPort: 8090
           env:
-            - name: ACTIVE_PROFILE
+            - name: SPRING_PROFILES_ACTIVE
               value: test
           resources:
             requests:
