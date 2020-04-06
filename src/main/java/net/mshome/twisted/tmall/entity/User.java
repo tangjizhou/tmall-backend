@@ -1,11 +1,7 @@
 package net.mshome.twisted.tmall.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.Accessors;
-import net.mshome.twisted.tmall.enumeration.DataState;
 
 import java.io.Serializable;
 
@@ -21,6 +17,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseEntity implements Serializable {
 

@@ -2,6 +2,7 @@ package net.mshome.twisted.tmall.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import net.mshome.twisted.tmall.constant.SessionConstants;
+import net.mshome.twisted.tmall.dto.UserLoginDTO;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.service.IPermissionService;
 import net.mshome.twisted.tmall.service.IRoleService;
@@ -16,7 +17,11 @@ import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -45,9 +50,11 @@ public class LoginController {
     private IRoleService roleService;
 
 
-    @GetMapping("/login")
-    public UserAuthVO login(@RequestParam String username, @RequestParam String password, HttpSession session) {
+    @PostMapping("/login")
+    public UserAuthVO login(@Validated @RequestBody UserLoginDTO loginDTO, @ApiIgnore HttpSession session) {
         Subject subject = SecurityUtils.getSubject();
+        String username = loginDTO.getUsername();
+        String password = loginDTO.getPassword();
         try {
             subject.login(new UsernamePasswordToken(username, password));
         } catch (IncorrectCredentialsException e) {
@@ -72,7 +79,7 @@ public class LoginController {
     }
 
     @PostMapping("/logout")
-    public void logout(HttpServletRequest request) {
+    public void logout(@ApiIgnore HttpServletRequest request) {
         SecurityUtils.getSubject().logout();
         request.getSession().invalidate();
     }

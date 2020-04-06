@@ -8,6 +8,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,7 +58,15 @@ public class GlobalControllerAdvice {
     public ResultWrapper<String> handleBindException(BindException e, HttpServletRequest request) {
         log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()));
         return ResultWrapper.<String>builder().code(ErrorCode.BAD_REQUEST.getValue())
-                .message(e.getBindingResult().toString()).build();
+                .message(e.getBindingResult().getAllErrors().get(0).getDefaultMessage()).build();
+    }
+
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public ResultWrapper<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException e,
+                                                                       HttpServletRequest request) {
+        log.error(String.format("%s,url [%s]", e.getMessage(), request.getRequestURL()));
+        return ResultWrapper.<String>builder().code(ErrorCode.BAD_REQUEST.getValue())
+                .message(e.getBindingResult().getAllErrors().get(0).getDefaultMessage()).build();
     }
 
     @ExceptionHandler({IllegalArgumentException.class})

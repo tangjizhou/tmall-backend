@@ -19,7 +19,7 @@ import java.util.List;
 public class EnumController {
 
     @GetMapping("/data-state")
-    public List<DataState> listDataState() {
+    public List<DataState> queryDataStates() {
         return Arrays.asList(DataState.values());
     }
 
