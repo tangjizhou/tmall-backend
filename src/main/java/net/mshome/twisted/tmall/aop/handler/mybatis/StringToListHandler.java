@@ -21,7 +21,8 @@ import java.util.Optional;
 public class StringToListHandler implements TypeHandler<List<String>> {
 
     @Override
-    public void setParameter(PreparedStatement ps, int i, List<String> parameter, JdbcType jdbcType) throws SQLException {
+    public void setParameter(PreparedStatement ps, int i, List<String> parameter, JdbcType jdbcType)
+            throws SQLException {
         parameter = Optional.ofNullable(parameter).orElse(List.of());
         ps.setString(i, String.join(",", parameter));
     }

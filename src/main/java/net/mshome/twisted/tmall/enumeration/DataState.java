@@ -14,7 +14,7 @@ public enum DataState implements IEnum<String> {
     VALID("有效"),
     INVALID("无效");
 
-    private String cnName;
+    private final String cnName;
 
     DataState(String cnName) {
         this.cnName = cnName;

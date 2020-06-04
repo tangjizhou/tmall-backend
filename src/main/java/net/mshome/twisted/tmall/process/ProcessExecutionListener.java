@@ -1,6 +1,6 @@
 package net.mshome.twisted.tmall.process;
 
-import net.mshome.twisted.tmall.process.exception.ProcessConfigureException;
+import net.mshome.twisted.tmall.exception.ProcessConfigureException;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.delegate.Expression;

@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     druid:
-      max-active: 10
+      max-active: 3
       min-idle: 0
-      max-wait: 3000
+      max-wait: 300000
       max-evictable-idle-time-millis: 60000
       min-evictable-idle-time-millis: 30000
       test-on-return: false
@@ -30,6 +30,7 @@ spring:
     async-executor-activate: false
     check-process-definitions: false
     history-level: audit
+    database-schema-update:
 
 mybatis-plus:
   type-enums-package: net.mshome.twisted.tmall.enumeration
@@ -37,7 +38,6 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   type-handlers-package: net.mshome.twisted.tmall.aop.handler.mybatis
   mapper-locations: classpath:mapper/*Mapper.xml
-
 
 tmall:
   sync:

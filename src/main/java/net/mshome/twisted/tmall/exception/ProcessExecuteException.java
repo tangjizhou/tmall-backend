@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.process.exception;
+package net.mshome.twisted.tmall.exception;
 
 /**
  * 流程执行异常
