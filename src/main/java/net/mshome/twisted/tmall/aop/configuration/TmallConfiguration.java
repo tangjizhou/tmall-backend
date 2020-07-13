@@ -13,12 +13,24 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.util.UriTemplate;
+import org.springframework.web.util.UriTemplateHandler;
 
 import javax.annotation.PostConstruct;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * 系统通用简单配置
@@ -66,5 +78,46 @@ public class TmallConfiguration {
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
+
+
+    @Bean
+    public RestTemplate restTemplate() {
+        final String token = UUID.randomUUID().toString();
+        MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<>();
+        multiValueMap.put("token", List.of(UUID.randomUUID().toString()));
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setUriTemplateHandler(new UriTemplateHandler() {
+            @Override
+            public URI expand(String uriTemplate, Map<String, ?> uriVariables) {
+                URI uri = new UriTemplate(uriTemplate).expand(uriVariables);
+                UriComponentsBuilder builder = UriComponentsBuilder.fromUri(uri);
+                builder.replaceQueryParam("token", token);
+                return URI.create(builder.toUriString());
+            }
+
+            @Override
+            public URI expand(String uriTemplate, Object... uriVariables) {
+                URI uri = new UriTemplate(uriTemplate).expand(uriVariables);
+                UriComponentsBuilder builder = UriComponentsBuilder.fromUri(uri);
+                builder.replaceQueryParam("token", token);
+                return URI.create(builder.toUriString());
+            }
+        });
+
+
+        ClientHttpRequestInterceptor interceptor = (request, body, execution) -> {
+            URI uri = request.getURI();
+            UriComponentsBuilder builder = UriComponentsBuilder.fromUri(uri);
+            multiValueMap.put("search", List.of(UUID.randomUUID().toString()));
+            builder.replaceQueryParams(multiValueMap);
+            System.out.println(builder.toUriString());
+            System.out.println(new String(body, StandardCharsets.UTF_8));
+            return execution.execute(request, body);
+        };
+
+        restTemplate.setInterceptors(List.of(interceptor));
+        return restTemplate;
+    }
+
 
 }

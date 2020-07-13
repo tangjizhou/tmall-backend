@@ -17,10 +17,7 @@ import net.mshome.twisted.tmall.service.excel.ProductImportListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -50,8 +47,8 @@ public class ProductController {
 
     @ApiOperation("查询产品")
     @GetMapping("/list")
-    // @RequiresPermissions("admin")
-    public IPage<Product> listProducts() {
+    public IPage<Product> listProducts(@RequestParam(required = false) String search) {
+        System.out.println(search);
         IPage<Product> page = new Page<>(1, 10, 10);
         return productService.page(page, new QueryWrapper<>());
     }
