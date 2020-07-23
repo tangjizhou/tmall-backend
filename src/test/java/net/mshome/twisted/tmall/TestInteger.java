@@ -48,6 +48,10 @@ public class TestInteger {
         // System.out.println(g.equals(a + b));
         // System.out.println(1);
 
+        // Error:(53, 23) java: 无法访问的语句
+        // while (false) {
+        //     System.out.println(123123);
+        // }
     }
 
 }
