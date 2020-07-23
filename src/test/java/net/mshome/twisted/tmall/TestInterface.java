@@ -1,5 +1,8 @@
 package net.mshome.twisted.tmall;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * TODO
  *
@@ -39,6 +42,8 @@ public class TestInterface {
 
 
     public static void main(String[] args) {
+        List<Integer> code = Arrays.asList(1, 2, 3, 4);
+
         System.out.println(Base.A);
         System.out.println(Child.A);
         System.out.println(BaseClass.A);
