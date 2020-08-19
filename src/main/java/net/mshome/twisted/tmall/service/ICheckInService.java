@@ -1,6 +1,7 @@
 package net.mshome.twisted.tmall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import net.mshome.twisted.tmall.dto.CheckInDTO;
 import net.mshome.twisted.tmall.entity.CheckIn;
 
 /**
@@ -12,5 +13,7 @@ import net.mshome.twisted.tmall.entity.CheckIn;
  * @since 2020-06-04
  */
 public interface ICheckInService extends IService<CheckIn> {
+
+    void checkIn(CheckInDTO checkInDTO);
 
 }

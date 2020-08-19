@@ -1,6 +1,5 @@
 package net.mshome.twisted.tmall.util;
 
-import lombok.experimental.UtilityClass;
 import net.mshome.twisted.tmall.entity.BaseEntity;
 import org.apache.commons.collections4.CollectionUtils;
 
@@ -17,8 +16,11 @@ import java.util.stream.Collectors;
  * @author tangjizhouchn@foxmail.com
  * @date 2020/3/1
  */
-@UtilityClass
 public class EntityUtils {
+
+    private EntityUtils() {
+
+    }
 
     /**
      * 收集entity的id
@@ -30,7 +32,7 @@ public class EntityUtils {
         if (CollectionUtils.isEmpty(entities)) {
             return Collections.emptyList();
         }
-        return convert(entities, BaseEntity::getId);
+        return collect(entities, BaseEntity::getId);
     }
 
     /**
@@ -71,17 +73,17 @@ public class EntityUtils {
     /**
      * 转换List中的类型
      *
-     * @param list        输入List
-     * @param convertFunc 转换方法
-     * @param <T>         输入类型
-     * @param <K>         输出类型
+     * @param list      输入List
+     * @param valueFunc 转换方法
+     * @param <T>       输入类型
+     * @param <K>       输出类型
      * @return 转换后的List
      */
-    public static <T, K> List<K> convert(Collection<T> list, Function<T, K> convertFunc) {
+    public static <T, K> List<K> collect(Collection<T> list, Function<T, K> valueFunc) {
         if (CollectionUtils.isEmpty(list)) {
             return Collections.emptyList();
         }
-        return list.stream().map(convertFunc).collect(Collectors.toList());
+        return list.stream().map(valueFunc).collect(Collectors.toList());
     }
 
 

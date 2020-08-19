@@ -25,7 +25,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -50,7 +49,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         Preconditions.checkArgument(count == 0, "用户%s已存在", username);
         User user = User.builder().username(username).password(password)
                 .address(userAddDTO.getAddress()).realName(userAddDTO.getRealName()).build();
-        baseMapper.insert(user);
+        save(user);
     }
 
     @Override
@@ -79,7 +78,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         IPage<User> usersPage = page(queryDTO.toPage(), queryWrapper);
         Page<UserQueryVO> voPage = queryDTO.toPage();
         BeanUtils.copyProperties(usersPage, voPage);
-        return voPage.setRecords(EntityUtils.convert(usersPage.getRecords(), UserQueryVO::fromUser));
+        return voPage.setRecords(EntityUtils.collect(usersPage.getRecords(), UserQueryVO::fromUser));
     }
 
     @Override
@@ -88,7 +87,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return Collections.emptyList();
         }
         var queryWrapper = new QueryWrapper<User>().in("username", usernames);
-        return list(queryWrapper).stream().distinct().collect(Collectors.toList());
+        return list(queryWrapper);
     }
 
 }
