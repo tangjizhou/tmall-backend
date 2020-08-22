@@ -9,7 +9,7 @@
     <description>tmall商城学习项目</description>
 
     <properties>
-        <springboot.version>2.3.2.RELEASE</springboot.version>
+        <springboot.version>2.3.3.RELEASE</springboot.version>
         <java.version>14</java.version>
         <swagger.version>2.9.2</swagger.version>
         <dockerfile.maven.version>1.4.0</dockerfile.maven.version>
@@ -143,19 +143,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${springboot.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
