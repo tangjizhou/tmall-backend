@@ -1,7 +1,6 @@
 package net.mshome.twisted.tmall.aop.handler;
 
 import lombok.extern.slf4j.Slf4j;
-import net.mshome.twisted.tmall.common.ResultWrapper;
 import net.mshome.twisted.tmall.enumeration.ErrorCode;
 import net.mshome.twisted.tmall.exception.TmallException;
 import org.apache.shiro.authc.UnknownAccountException;

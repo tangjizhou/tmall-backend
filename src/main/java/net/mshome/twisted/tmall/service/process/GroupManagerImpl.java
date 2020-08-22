@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.process.custom;
+package net.mshome.twisted.tmall.service.process;
 
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.service.IRoleService;
@@ -21,14 +21,14 @@ import java.util.Map;
  * @author tangjizhouchn@foxmail.com
  * @since 2020/3/29
  */
-public class TmallGroupManagerImpl extends AbstractManager implements GroupEntityManager {
+public class GroupManagerImpl extends AbstractManager implements GroupEntityManager {
 
     private static final long serialVersionUID = -6836092804149039544L;
     private static final String TYPE = "system_role";
 
     private IRoleService roleService;
 
-    public TmallGroupManagerImpl(ProcessEngineConfigurationImpl processEngineConfiguration, IRoleService roleService) {
+    public GroupManagerImpl(ProcessEngineConfigurationImpl processEngineConfiguration, IRoleService roleService) {
         super(processEngineConfiguration);
         this.roleService = roleService;
     }

@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.process;
+package net.mshome.twisted.tmall.service.process;
 
 /**
  * 流程通用变量名常量类

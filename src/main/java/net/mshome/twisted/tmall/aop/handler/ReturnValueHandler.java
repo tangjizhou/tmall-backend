@@ -1,6 +1,5 @@
 package net.mshome.twisted.tmall.aop.handler;
 
-import net.mshome.twisted.tmall.common.ResultWrapper;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotWritableException;

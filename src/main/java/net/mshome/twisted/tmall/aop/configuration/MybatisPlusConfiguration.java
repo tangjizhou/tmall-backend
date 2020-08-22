@@ -1,7 +1,7 @@
 package net.mshome.twisted.tmall.aop.configuration;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import net.mshome.twisted.tmall.aop.handler.mybatis.MybatisPlusMetaObjectHandler;
+import net.mshome.twisted.tmall.aop.handler.MybatisMetaObjectHandler;
 import net.mshome.twisted.tmall.aop.interceptor.MybatisSqlInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -30,8 +30,8 @@ public class MybatisPlusConfiguration {
     }
 
     @Bean
-    public MybatisPlusMetaObjectHandler mybatisPlusMetaObjectHandler() {
-        return new MybatisPlusMetaObjectHandler();
+    public MybatisMetaObjectHandler mybatisPlusMetaObjectHandler() {
+        return new MybatisMetaObjectHandler();
     }
 
 }

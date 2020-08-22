@@ -1,10 +1,10 @@
-package net.mshome.twisted.tmall.process.checkin.execution;
+package net.mshome.twisted.tmall.service.process.checkin.execution;
 
 import net.mshome.twisted.tmall.entity.Product;
 import net.mshome.twisted.tmall.enumeration.DataState;
 import net.mshome.twisted.tmall.exception.ProcessExecuteException;
-import net.mshome.twisted.tmall.process.ProcessExecutionService;
-import net.mshome.twisted.tmall.process.checkin.VarDefinition;
+import net.mshome.twisted.tmall.service.process.ProcessExecutionService;
+import net.mshome.twisted.tmall.service.process.checkin.VarDefinition;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

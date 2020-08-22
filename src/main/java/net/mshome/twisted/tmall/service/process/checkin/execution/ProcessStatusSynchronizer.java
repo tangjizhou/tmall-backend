@@ -1,8 +1,8 @@
-package net.mshome.twisted.tmall.process.checkin.execution;
+package net.mshome.twisted.tmall.service.process.checkin.execution;
 
 import net.mshome.twisted.tmall.entity.CheckIn;
-import net.mshome.twisted.tmall.process.ProcessExecutionService;
 import net.mshome.twisted.tmall.service.ICheckInService;
+import net.mshome.twisted.tmall.service.process.ProcessExecutionService;
 import org.activiti.bpmn.model.FlowElement;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.springframework.beans.factory.annotation.Autowired;

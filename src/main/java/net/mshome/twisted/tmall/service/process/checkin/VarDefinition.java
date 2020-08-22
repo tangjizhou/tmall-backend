@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.process.checkin;
+package net.mshome.twisted.tmall.service.process.checkin;
 
 import lombok.experimental.UtilityClass;
 

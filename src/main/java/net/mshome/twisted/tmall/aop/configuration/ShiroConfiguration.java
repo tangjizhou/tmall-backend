@@ -1,6 +1,6 @@
 package net.mshome.twisted.tmall.aop.configuration;
 
-import net.mshome.twisted.tmall.common.UserRealm;
+import net.mshome.twisted.tmall.aop.interceptor.UserRealm;
 import org.apache.shiro.authc.credential.DefaultPasswordService;
 import org.apache.shiro.authc.credential.PasswordMatcher;
 import org.apache.shiro.cache.Cache;

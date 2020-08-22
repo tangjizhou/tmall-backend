@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.process.custom;
+package net.mshome.twisted.tmall.service.process;
 
 import net.mshome.twisted.tmall.service.IUserService;
 import org.activiti.engine.identity.Group;
@@ -17,18 +17,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * TODO
+ * 自定义用户服务
  *
  * @author tangjizhouchn@foxmail.com
  * @since 2020/3/28
  */
-public class TmallUserManagerImpl extends AbstractManager implements UserEntityManager {
+public class UserManagerImpl extends AbstractManager implements UserEntityManager {
 
     private static final long serialVersionUID = -6836092804149039544L;
 
     private IUserService userService;
 
-    public TmallUserManagerImpl(ProcessEngineConfigurationImpl processEngineConfiguration, IUserService userService) {
+    public UserManagerImpl(ProcessEngineConfigurationImpl processEngineConfiguration, IUserService userService) {
         super(processEngineConfiguration);
         this.userService = userService;
     }

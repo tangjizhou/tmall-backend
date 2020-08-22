@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.aop.handler.mybatis;
+package net.mshome.twisted.tmall.aop.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import net.mshome.twisted.tmall.enumeration.DataState;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @author tangjizhouchn@foxmail.com
  * @date 2019/8/26
  */
-public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
+public class MybatisMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {

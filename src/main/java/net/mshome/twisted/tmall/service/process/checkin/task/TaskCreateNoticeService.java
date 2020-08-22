@@ -1,10 +1,10 @@
-package net.mshome.twisted.tmall.process.checkin.task;
+package net.mshome.twisted.tmall.service.process.checkin.task;
 
 import net.mshome.twisted.message.client.MessageClient;
 import net.mshome.twisted.message.model.SimpleEmailContext;
 import net.mshome.twisted.tmall.entity.Product;
-import net.mshome.twisted.tmall.process.TaskExecutionService;
-import net.mshome.twisted.tmall.process.checkin.VarDefinition;
+import net.mshome.twisted.tmall.service.process.TaskExecutionService;
+import net.mshome.twisted.tmall.service.process.checkin.VarDefinition;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.DelegateTask;
 import org.springframework.beans.factory.annotation.Autowired;

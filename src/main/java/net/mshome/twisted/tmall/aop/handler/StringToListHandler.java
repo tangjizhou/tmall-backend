@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.aop.handler.mybatis;
+package net.mshome.twisted.tmall.aop.handler;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import org.apache.ibatis.type.JdbcType;

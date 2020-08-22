@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.process.checkin.execution;
+package net.mshome.twisted.tmall.service.process.checkin.execution;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;

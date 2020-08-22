@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.common;
+package net.mshome.twisted.tmall.aop.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
