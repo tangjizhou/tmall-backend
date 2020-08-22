@@ -30,7 +30,6 @@ spring:
     async-executor-activate: false
     check-process-definitions: false
     history-level: audit
-    database-schema-update:
 
 mybatis-plus:
   type-enums-package: net.mshome.twisted.tmall.enumeration
