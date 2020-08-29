@@ -44,4 +44,9 @@ public class CheckInServiceImpl extends ServiceImpl<CheckInMapper, CheckIn> impl
         processService.startProcess(ProcessType.CHECK_IN, checkIn.getId().toString(), Collections.emptyMap());
     }
 
+    @Override
+    public void update(CheckInDTO checkInDTO) {
+        System.out.println(baseMapper.update(checkInDTO));
+    }
+
 }

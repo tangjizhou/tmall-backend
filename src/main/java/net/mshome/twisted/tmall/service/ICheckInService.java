@@ -16,4 +16,6 @@ public interface ICheckInService extends IService<CheckIn> {
 
     void checkIn(CheckInDTO checkInDTO);
 
+    void update(CheckInDTO checkInDTO);
+
 }
