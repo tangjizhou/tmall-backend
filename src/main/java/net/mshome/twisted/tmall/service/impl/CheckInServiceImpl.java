@@ -10,6 +10,8 @@ import net.mshome.twisted.tmall.mapper.CheckInMapper;
 import net.mshome.twisted.tmall.service.ICheckInService;
 import net.mshome.twisted.tmall.service.IProcessService;
 import net.mshome.twisted.tmall.service.IProductService;
+import net.mshome.twisted.tmall.service.process.ProcessStatusEventSubscriber;
+import net.mshome.twisted.tmall.service.process.model.ProcessStatusPayload;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,8 @@ import java.util.Collections;
  * @since 2020-06-04
  */
 @Service
-public class CheckInServiceImpl extends ServiceImpl<CheckInMapper, CheckIn> implements ICheckInService {
+public class CheckInServiceImpl extends ServiceImpl<CheckInMapper, CheckIn> implements ICheckInService,
+        ProcessStatusEventSubscriber {
 
     @Autowired
     private IProductService productService;
@@ -47,6 +50,20 @@ public class CheckInServiceImpl extends ServiceImpl<CheckInMapper, CheckIn> impl
     @Override
     public void update(CheckInDTO checkInDTO) {
         System.out.println(baseMapper.update(checkInDTO));
+    }
+
+    @Override
+    public void sync(ProcessStatusPayload payload) {
+        CheckIn checkIn = new CheckIn();
+        checkIn.setId(Long.valueOf(payload.getBusinessKey()));
+        checkIn.setProcessNodeId(payload.getNodeId());
+        checkIn.setProcessNodeName(payload.getNodeName());
+        updateById(checkIn);
+    }
+
+    @Override
+    public boolean supportsProcessType(ProcessType processType) {
+        return ProcessType.CHECK_IN == processType;
     }
 
 }

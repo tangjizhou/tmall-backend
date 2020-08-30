@@ -23,7 +23,7 @@ public class ProcessStartCheckService implements ProcessExecutionService {
 
     @Override
     public void execute(DelegateExecution delegateExecution, final String param) {
-        Product product = (Product) delegateExecution.getVariable(VarDefinition.CHECK_IN_PRODUCT);
+        Product product = delegateExecution.getVariable(VarDefinition.CHECK_IN_PRODUCT, Product.class);
         if (product.getDataState() == DataState.INVALID) {
             throw new ProcessExecuteException("当前产品已经失效");
         }

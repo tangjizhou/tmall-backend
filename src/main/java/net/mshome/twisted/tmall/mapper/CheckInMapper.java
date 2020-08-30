@@ -5,8 +5,6 @@ import net.mshome.twisted.tmall.dto.CheckInDTO;
 import net.mshome.twisted.tmall.entity.CheckIn;
 import org.apache.ibatis.annotations.Param;
 
-import java.time.LocalDateTime;
-
 /**
  * <p>
  * Mapper 接口
@@ -17,6 +15,6 @@ import java.time.LocalDateTime;
  */
 public interface CheckInMapper extends BaseMapper<CheckIn> {
 
-    LocalDateTime update(@Param("checkInDTO") CheckInDTO checkInDTO);
+    String update(@Param("checkInDTO") CheckInDTO checkInDTO);
 
 }
