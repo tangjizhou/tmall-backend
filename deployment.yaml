@@ -62,3 +62,18 @@ spec:
   ports:
     - port: 8090
       targetPort: 8090
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: tmall-service
+  namespace: cad-t4
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/tmall-service/`)
+      kind: Rule
+      services:
+        - name: tmall-service
+          port: 8090
