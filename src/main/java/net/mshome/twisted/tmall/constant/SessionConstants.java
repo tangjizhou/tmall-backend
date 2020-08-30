@@ -11,6 +11,6 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class SessionConstants {
 
-    public static final String USER_SESSION_KEY = "_USER_SESSION_KEY_";
+    public final String USER_SESSION_KEY = "_USER_SESSION_KEY_";
 
 }

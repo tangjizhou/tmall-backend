@@ -6,7 +6,7 @@ import net.mshome.twisted.tmall.enumeration.ProcessType;
 import net.mshome.twisted.tmall.mapper.PurchaseOrderMapper;
 import net.mshome.twisted.tmall.service.IPurchaseOrderService;
 import net.mshome.twisted.tmall.service.process.ProcessStatusEventSubscriber;
-import net.mshome.twisted.tmall.service.process.model.ProcessStatusPayload;
+import net.mshome.twisted.tmall.service.process.model.ProcessStatusEventBroadcastPayload;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +27,7 @@ public class PurchaseOrderServiceImpl extends ServiceImpl<PurchaseOrderMapper, P
     }
 
     @Override
-    public void sync(ProcessStatusPayload payload) {
+    public void sync(ProcessStatusEventBroadcastPayload payload) {
 
     }
 

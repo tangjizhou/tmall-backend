@@ -14,10 +14,10 @@ public class PermissionConstants {
     /**
      * 系统管理
      */
-    public static final String SYSTEM_MANAGE = "system_manage";
+    public final String SYSTEM_MANAGE = "system_manage";
     /**
      * 用户管理
      */
-    public static final String USER_MANAGE = "user_manage";
+    public final String USER_MANAGE = "user_manage";
 
 }

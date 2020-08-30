@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProcessStatusPayload {
+public class ProcessStatusEventBroadcastPayload {
 
     private String businessKey;
     private String processId;

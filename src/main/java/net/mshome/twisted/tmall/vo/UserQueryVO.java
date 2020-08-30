@@ -10,6 +10,7 @@ import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.enumeration.DataState;
 import org.springframework.beans.BeanUtils;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -21,8 +22,9 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserQueryVO {
+public class UserQueryVO implements Serializable {
 
+    private static final long serialVersionUID = 4346366700132759635L;
     private String username;
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     private DataState dataState;

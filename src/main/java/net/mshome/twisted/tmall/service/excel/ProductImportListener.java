@@ -21,9 +21,9 @@ import java.util.List;
 @Slf4j
 public class ProductImportListener extends AnalysisEventListener<ProductSheetModel> {
 
-    private List<ProductSheetModel> sheetModels;
-    private IProductService productService;
-    private List<String> errors;
+    private final List<ProductSheetModel> sheetModels;
+    private final IProductService productService;
+    private final List<String> errors;
 
     public ProductImportListener(IProductService productService) {
         this.productService = productService;

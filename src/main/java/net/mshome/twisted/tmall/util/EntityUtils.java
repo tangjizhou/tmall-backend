@@ -44,11 +44,11 @@ public class EntityUtils {
      * @param <K>        key类型
      * @return 以集合中对象的字段索引的对象map
      */
-    public static <T, K> Map<K, T> listToMap(Collection<T> collection, Function<T, K> keyFunc) {
+    public static <T, K> Map<K, T> collectToMap(Collection<T> collection, Function<T, K> keyFunc) {
         if (CollectionUtils.isEmpty(collection)) {
             return Collections.emptyMap();
         }
-        return listToMap(collection, keyFunc, Function.identity());
+        return collectToMap(collection, keyFunc, Function.identity());
     }
 
     /**
@@ -62,8 +62,8 @@ public class EntityUtils {
      * @param <U>        值类型
      * @return 索引的map
      */
-    public static <T, K, U> Map<K, U> listToMap(Collection<T> collection, Function<T, K> keyFunc,
-                                                Function<T, U> valueFunc) {
+    public static <T, K, U> Map<K, U> collectToMap(Collection<T> collection, Function<T, K> keyFunc,
+                                                   Function<T, U> valueFunc) {
         if (CollectionUtils.isEmpty(collection)) {
             return Collections.emptyMap();
         }

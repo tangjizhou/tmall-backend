@@ -1,7 +1,7 @@
 package net.mshome.twisted.tmall.service.process;
 
 import net.mshome.twisted.tmall.enumeration.ProcessType;
-import net.mshome.twisted.tmall.service.process.model.ProcessStatusPayload;
+import net.mshome.twisted.tmall.service.process.model.ProcessStatusEventBroadcastPayload;
 
 /**
  * 流程状态同步
@@ -13,6 +13,6 @@ public interface ProcessStatusEventSubscriber {
 
     boolean supportsProcessType(ProcessType processType);
 
-    void sync(ProcessStatusPayload payload);
+    void sync(ProcessStatusEventBroadcastPayload payload);
 
 }

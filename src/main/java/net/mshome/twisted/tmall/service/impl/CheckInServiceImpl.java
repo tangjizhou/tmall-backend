@@ -11,7 +11,7 @@ import net.mshome.twisted.tmall.service.ICheckInService;
 import net.mshome.twisted.tmall.service.IProcessService;
 import net.mshome.twisted.tmall.service.IProductService;
 import net.mshome.twisted.tmall.service.process.ProcessStatusEventSubscriber;
-import net.mshome.twisted.tmall.service.process.model.ProcessStatusPayload;
+import net.mshome.twisted.tmall.service.process.model.ProcessStatusEventBroadcastPayload;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +53,7 @@ public class CheckInServiceImpl extends ServiceImpl<CheckInMapper, CheckIn> impl
     }
 
     @Override
-    public void sync(ProcessStatusPayload payload) {
+    public void sync(ProcessStatusEventBroadcastPayload payload) {
         CheckIn checkIn = new CheckIn();
         checkIn.setId(Long.valueOf(payload.getBusinessKey()));
         checkIn.setProcessNodeId(payload.getNodeId());
