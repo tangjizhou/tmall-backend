@@ -68,12 +68,13 @@ public class TmallConfiguration {
 
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory,
+                                                       PrefixStringRedisKeySerializer redisKeySerializer) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
         redisTemplate.setHashKeySerializer(StringRedisSerializer.UTF_8);
         redisTemplate.setHashValueSerializer(StringRedisSerializer.UTF_8);
-        redisTemplate.setKeySerializer(StringRedisSerializer.UTF_8);
+        redisTemplate.setKeySerializer(redisKeySerializer);
         redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(Object.class));
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
