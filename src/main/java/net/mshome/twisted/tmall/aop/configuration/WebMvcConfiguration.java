@@ -1,9 +1,11 @@
 package net.mshome.twisted.tmall.aop.configuration;
 
 import net.mshome.twisted.tmall.aop.handler.ReturnValueHandler;
+import net.mshome.twisted.tmall.aop.handler.UserArgumentResolver;
 import net.mshome.twisted.tmall.aop.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -78,6 +80,11 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/**");
         super.addResourceHandlers(registry);
+    }
+
+    @Override
+    protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new UserArgumentResolver());
     }
 
 }

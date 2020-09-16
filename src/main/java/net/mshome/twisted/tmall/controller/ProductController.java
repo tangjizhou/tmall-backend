@@ -14,6 +14,7 @@ import net.mshome.twisted.tmall.exception.TmallException;
 import net.mshome.twisted.tmall.service.IProductService;
 import net.mshome.twisted.tmall.service.excel.ProductExportHandler;
 import net.mshome.twisted.tmall.service.excel.ProductImportListener;
+import net.mshome.twisted.tmall.vo.UserAuthVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -48,7 +49,8 @@ public class ProductController {
 
     @ApiOperation("查询产品")
     @GetMapping("/list")
-    public IPage<Product> listProducts(@RequestParam(required = false) String search) {
+    public IPage<Product> listProducts(@RequestParam(required = false) String search, UserAuthVO userAuthVO) {
+        log.info("获取到当前用户{}", userAuthVO);
         IPage<Product> page = new Page<>(1, 10, 10);
         return productService.page(page, new QueryWrapper<Product>()
                 .like(StringUtils.isNotBlank(search), "name", search));
