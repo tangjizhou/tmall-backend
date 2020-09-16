@@ -1,10 +1,11 @@
 package net.mshome.twisted.tmall.mapper;
 
-import net.mshome.twisted.tmall.entity.Permission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import net.mshome.twisted.tmall.entity.Permission;
 import net.mshome.twisted.tmall.enumeration.DataState;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,6 +18,6 @@ import java.util.Set;
  */
 public interface PermissionMapper extends BaseMapper<Permission> {
 
-    Set<String> selectCodesByRoles(@Param("roles") Set<String> roles, @Param("dataState") DataState dataState);
+    Set<String> selectCodeByRoles(@Param("roleIds") List<Long> roleIds, @Param("dataState") DataState dataState);
 
 }

@@ -10,15 +10,14 @@ import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
 import net.mshome.twisted.tmall.annotation.DefaultValueSupplier;
 import net.mshome.twisted.tmall.annotation.NullValueSupplier;
 import net.mshome.twisted.tmall.annotation.PermissionControlled;
+import net.mshome.twisted.tmall.constant.SessionConstants;
+import net.mshome.twisted.tmall.vo.UserAuthVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 自定义序列化，结合shiro加入权限控制
@@ -28,18 +27,18 @@ import java.util.Objects;
  */
 public class TmallBeanSerializeModifier extends BeanSerializerModifier {
 
-    private static boolean isInclude(Subject subject, String[] include) {
-        if (Objects.isNull(subject) || include.length == 0) {
+    private static boolean isInclude(Set<String> permissions, String[] include) {
+        if (Objects.isNull(permissions) || include.length == 0) {
             return true;
         }
-        return Arrays.stream(include).anyMatch(subject::isPermitted);
+        return Arrays.stream(include).anyMatch(permissions::contains);
     }
 
-    private static boolean isExclude(Subject subject, String[] exclude) {
-        if (Objects.isNull(subject) || exclude.length == 0) {
+    private static boolean isExclude(Set<String> permissions, String[] exclude) {
+        if (Objects.isNull(permissions) || exclude.length == 0) {
             return true;
         }
-        return Arrays.stream(exclude).anyMatch(subject::isPermitted);
+        return Arrays.stream(exclude).anyMatch(permissions::contains);
     }
 
 
@@ -59,7 +58,7 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
 
     private static class PermissionControlledJsonSerializer extends JsonSerializer<Object> {
 
-        private BeanPropertyWriter propertyWriter;
+        private final BeanPropertyWriter propertyWriter;
 
         private static final NullValueSupplier DEFAULT_VALUE_SUPPLIER = new NullValueSupplier();
 
@@ -70,19 +69,19 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
         @Override
         public void serialize(Object o, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
                 throws IOException {
-            PermissionControlled controlled = propertyWriter.findAnnotation(PermissionControlled.class);
-            Subject subject = SecurityUtils.getSubject();
-            String[] include = controlled.include();
-            String[] exclude = controlled.exclude();
-
             // 无用户,敏感数据，直接打码
+            Subject subject = SecurityUtils.getSubject();
             if (Objects.isNull(subject)) {
                 jsonGenerator.writeNull();
                 return;
             }
+            PermissionControlled controlled = propertyWriter.findAnnotation(PermissionControlled.class);
+            String[] include = controlled.include();
+            String[] exclude = controlled.exclude();
+            UserAuthVO authVO = (UserAuthVO) subject.getSession().getAttribute(SessionConstants.USER_SESSION_KEY);
 
             // 有权限则写入真实的值
-            if (!isExclude(subject, exclude) && isInclude(subject, include)) {
+            if (!isExclude(authVO.getPermissions(), exclude) && isInclude(authVO.getPermissions(), include)) {
                 jsonGenerator.writeObject(o);
                 return;
             }

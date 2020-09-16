@@ -14,6 +14,7 @@ import net.mshome.twisted.tmall.exception.TmallException;
 import net.mshome.twisted.tmall.service.IProductService;
 import net.mshome.twisted.tmall.service.excel.ProductExportHandler;
 import net.mshome.twisted.tmall.service.excel.ProductImportListener;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.util.Assert;
@@ -48,9 +49,9 @@ public class ProductController {
     @ApiOperation("查询产品")
     @GetMapping("/list")
     public IPage<Product> listProducts(@RequestParam(required = false) String search) {
-        System.out.println(search);
         IPage<Product> page = new Page<>(1, 10, 10);
-        return productService.page(page, new QueryWrapper<>());
+        return productService.page(page, new QueryWrapper<Product>()
+                .like(StringUtils.isNotBlank(search), "name", search));
     }
 
     @ApiOperation("导入excel文件")

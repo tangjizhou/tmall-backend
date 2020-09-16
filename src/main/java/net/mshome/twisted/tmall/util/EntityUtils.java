@@ -3,10 +3,7 @@ package net.mshome.twisted.tmall.util;
 import net.mshome.twisted.tmall.entity.BaseEntity;
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -86,5 +83,11 @@ public class EntityUtils {
         return list.stream().map(valueFunc).collect(Collectors.toList());
     }
 
+    public static <T, K> Set<K> collectToSet(Collection<T> list, Function<T, K> valueFunc) {
+        if (CollectionUtils.isEmpty(list)) {
+            return Collections.emptySet();
+        }
+        return list.stream().map(valueFunc).collect(Collectors.toSet());
+    }
 
 }

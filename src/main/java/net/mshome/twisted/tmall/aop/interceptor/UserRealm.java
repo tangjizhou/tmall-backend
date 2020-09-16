@@ -1,10 +1,12 @@
 package net.mshome.twisted.tmall.aop.interceptor;
 
+import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.enumeration.DataState;
 import net.mshome.twisted.tmall.service.IPermissionService;
 import net.mshome.twisted.tmall.service.IRoleService;
 import net.mshome.twisted.tmall.service.IUserService;
+import net.mshome.twisted.tmall.util.EntityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -16,6 +18,7 @@ import org.apache.shiro.util.Assert;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -36,16 +39,18 @@ public class UserRealm extends AuthorizingRealm {
     private IRoleService roleService;
 
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+    public AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String) principals.getPrimaryPrincipal();
         User user = userService.getByUsername(username).orElseThrow(() -> new UnauthenticatedException("用户不存在"));
         if (user.getDataState() == DataState.INVALID) {
             throw new UnauthenticatedException("当前用户已失效，请联系管理员！");
         }
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        Set<String> roles = roleService.listCodesByUserId(user.getId());
-        authorizationInfo.setRoles(roles);
-        Set<String> permissions = permissionService.listCodesByRoles(roles);
+        List<Role> roles = roleService.listByUserId(user.getId());
+        Set<String> roleCodes = EntityUtils.collectToSet(roles, Role::getCode);
+        List<Long> roleIds = EntityUtils.collectIds(roles);
+        authorizationInfo.setRoles(roleCodes);
+        Set<String> permissions = permissionService.listCodeByRoleIds(roleIds);
         authorizationInfo.setStringPermissions(permissions);
         return authorizationInfo;
     }

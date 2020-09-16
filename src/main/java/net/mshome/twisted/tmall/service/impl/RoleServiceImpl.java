@@ -1,15 +1,15 @@
 package net.mshome.twisted.tmall.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.enumeration.DataState;
 import net.mshome.twisted.tmall.mapper.RoleMapper;
 import net.mshome.twisted.tmall.service.IRoleService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * <p>
@@ -23,11 +23,11 @@ import java.util.Set;
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
     @Override
-    public Set<String> listCodesByUserId(Long userId) {
+    public List<Role> listByUserId(Long userId) {
         if (Objects.isNull(userId)) {
-            return Collections.emptySet();
+            return Collections.emptyList();
         }
-        return baseMapper.selectCodesByUsername(userId, DataState.VALID);
+        return baseMapper.selectByUserId(userId, DataState.VALID);
     }
 
 }

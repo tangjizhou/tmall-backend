@@ -1,8 +1,9 @@
 package net.mshome.twisted.tmall.service;
 
-import net.mshome.twisted.tmall.entity.Permission;
 import com.baomidou.mybatisplus.extension.service.IService;
+import net.mshome.twisted.tmall.entity.Permission;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,6 +16,6 @@ import java.util.Set;
  */
 public interface IPermissionService extends IService<Permission> {
 
-    Set<String> listCodesByRoles(Set<String> roles);
+    Set<String> listCodeByRoleIds(List<Long> roleIds);
 
 }

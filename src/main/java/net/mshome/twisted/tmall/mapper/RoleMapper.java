@@ -1,11 +1,11 @@
 package net.mshome.twisted.tmall.mapper;
 
-import net.mshome.twisted.tmall.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.enumeration.DataState;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * <p>
@@ -17,6 +17,6 @@ import java.util.Set;
  */
 public interface RoleMapper extends BaseMapper<Role> {
 
-    Set<String> selectCodesByUsername(@Param("userId") Long userId, @Param("dataState") DataState dataState);
+    List<Role> selectByUserId(@Param("userId") Long userId, @Param("dataState") DataState dataState);
 
 }

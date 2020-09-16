@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,11 +26,11 @@ import java.util.Set;
 public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
 
     @Override
-    public Set<String> listCodesByRoles(Set<String> roles) {
-        if (CollectionUtils.isEmpty(roles)) {
+    public Set<String> listCodeByRoleIds(List<Long> roleIds) {
+        if (CollectionUtils.isEmpty(roleIds)) {
             return Collections.emptySet();
         }
-        return baseMapper.selectCodesByRoles(roles, DataState.VALID);
+        return baseMapper.selectCodeByRoles(roleIds, DataState.VALID);
     }
 
 }

@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * 系统通用简单配置
+ * 系统配置
  *
  * @author tangjizhouchn@foxmail.com
  * @date 2019/10/16

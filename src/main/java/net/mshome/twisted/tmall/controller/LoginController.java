@@ -3,10 +3,12 @@ package net.mshome.twisted.tmall.controller;
 import lombok.extern.slf4j.Slf4j;
 import net.mshome.twisted.tmall.constant.SessionConstants;
 import net.mshome.twisted.tmall.dto.UserLoginDTO;
+import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
 import net.mshome.twisted.tmall.service.IPermissionService;
 import net.mshome.twisted.tmall.service.IRoleService;
 import net.mshome.twisted.tmall.service.IUserService;
+import net.mshome.twisted.tmall.util.EntityUtils;
 import net.mshome.twisted.tmall.vo.UserAuthVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -25,6 +27,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -70,10 +73,12 @@ public class LoginController {
         Optional<User> userOptional = userService.getByUsername(username);
         Long userId = userOptional.map(User::getId).orElse(0L);
         String realName = userOptional.map(User::getRealName).orElse("游客");
-        Set<String> roles = roleService.listCodesByUserId(userId);
-        Set<String> permissions = permissionService.listCodesByRoles(roles);
+        List<Role> roles = roleService.listByUserId(userId);
+        Set<String> roleCodes = EntityUtils.collectToSet(roles, Role::getCode);
+        List<Long> roleIds = EntityUtils.collectIds(roles);
+        Set<String> permissions = permissionService.listCodeByRoleIds(roleIds);
         UserAuthVO userAuthVO = UserAuthVO.builder().username(username).realName(realName)
-                .roles(roles).permissions(permissions).build();
+                .roles(roleCodes).permissions(permissions).build();
         session.setAttribute(SessionConstants.USER_SESSION_KEY, userAuthVO);
         return userAuthVO;
     }

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.mshome.twisted.tmall.mapper.RoleMapper">
 
-    <select id="selectCodesByUsername" resultType="java.lang.String">
-        select code
+    <select id="selectByUserId" resultType="net.mshome.twisted.tmall.entity.Role">
+        select *
         from role join user_role ur on role.id = ur.role_id
         where ur.user_id = #{userId}
           and role.data_state = #{dataState}
