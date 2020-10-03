@@ -16,7 +16,7 @@ spring:
       filter:
         config:
           enabled: true
-      url: jdbc:mysql://192.168.2.102:3306/tmall?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&allowPublicKeyRetrieval=true&allowMultiQueries=true
+      url: jdbc:mysql://192.168.101.2:3306/tmall?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&allowPublicKeyRetrieval=true&allowMultiQueries=true
       username: tmall
       password: C1JiG51qZPnW5gYIAczJ1aPPF9sPkAvOofQGXor/ictrloCluSk4BYPSwkcx4lcN1DE58FcgPQD+yfRjs025YQ==
       connect-properties:
@@ -25,12 +25,12 @@ spring:
   redis:
     cluster:
       nodes:
-        - 192.168.2.102:6379
-        - 192.168.2.102:6380
-        - 192.168.2.102:6381
-        - 192.168.2.102:6382
-        - 192.168.2.102:6383
-        - 192.168.2.102:6384
+        - 192.168.101.2:6379
+        - 192.168.101.2:6380
+        - 192.168.101.2:6381
+        - 192.168.101.2:6382
+        - 192.168.101.2:6383
+        - 192.168.101.2:6384
     lettuce:
       cluster:
         refresh:
