@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
 import net.mshome.twisted.tmall.annotation.DefaultValueSupplier;
 import net.mshome.twisted.tmall.annotation.NullValueSupplier;
 import net.mshome.twisted.tmall.annotation.PermissionControlled;
-import net.mshome.twisted.tmall.constant.SessionConstants;
+import net.mshome.twisted.tmall.constant.SessionKeyConstants;
 import net.mshome.twisted.tmall.vo.UserAuthVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -78,7 +78,7 @@ public class TmallBeanSerializeModifier extends BeanSerializerModifier {
             PermissionControlled controlled = propertyWriter.findAnnotation(PermissionControlled.class);
             String[] include = controlled.include();
             String[] exclude = controlled.exclude();
-            UserAuthVO authVO = (UserAuthVO) subject.getSession().getAttribute(SessionConstants.USER_SESSION_KEY);
+            UserAuthVO authVO = (UserAuthVO) subject.getSession().getAttribute(SessionKeyConstants.USER_SESSION_KEY);
 
             // 有权限则写入真实的值
             if (!isExclude(authVO.getPermissions(), exclude) && isInclude(authVO.getPermissions(), include)) {

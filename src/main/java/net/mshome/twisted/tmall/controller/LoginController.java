@@ -1,7 +1,7 @@
 package net.mshome.twisted.tmall.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import net.mshome.twisted.tmall.constant.SessionConstants;
+import net.mshome.twisted.tmall.constant.SessionKeyConstants;
 import net.mshome.twisted.tmall.dto.UserLoginDTO;
 import net.mshome.twisted.tmall.entity.Role;
 import net.mshome.twisted.tmall.entity.User;
@@ -79,7 +79,7 @@ public class LoginController {
         Set<String> permissions = permissionService.listCodeByRoleIds(roleIds);
         UserAuthVO userAuthVO = UserAuthVO.builder().username(username).realName(realName)
                 .roles(roleCodes).permissions(permissions).build();
-        session.setAttribute(SessionConstants.USER_SESSION_KEY, userAuthVO);
+        session.setAttribute(SessionKeyConstants.USER_SESSION_KEY, userAuthVO);
         return userAuthVO;
     }
 

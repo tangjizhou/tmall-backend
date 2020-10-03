@@ -1,6 +1,6 @@
 package net.mshome.twisted.tmall.aop.handler;
 
-import net.mshome.twisted.tmall.constant.SessionConstants;
+import net.mshome.twisted.tmall.constant.SessionKeyConstants;
 import net.mshome.twisted.tmall.vo.UserAuthVO;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.core.MethodParameter;
@@ -30,7 +30,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer,
                                   NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory)
             throws Exception {
-        return SecurityUtils.getSubject().getSession().getAttribute(SessionConstants.USER_SESSION_KEY);
+        return SecurityUtils.getSubject().getSession().getAttribute(SessionKeyConstants.USER_SESSION_KEY);
     }
 
 }
