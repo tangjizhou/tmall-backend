@@ -32,7 +32,7 @@ public class BaseEntity implements Serializable {
     /**
      * 数据表主键
      */
-    @TableId(value = "id", type = IdType.ID_WORKER)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     @ApiModelProperty(hidden = true)
     @JsonSerialize(using = ToStringSerializer.class)
     protected Long id;
