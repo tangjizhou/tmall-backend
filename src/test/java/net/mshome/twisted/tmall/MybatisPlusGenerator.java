@@ -28,7 +28,7 @@ public class MybatisPlusGenerator {
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setEntityLombokModel(true);
         strategyConfig.setRestControllerStyle(true);
-        strategyConfig.setEntityBuilderModel(true);
+        strategyConfig.setChainModel(true);
         strategyConfig.setControllerMappingHyphenStyle(true);
         strategyConfig.setSuperEntityClass(BaseEntity.class);
         autoGenerator.setStrategy(strategyConfig);

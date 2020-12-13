@@ -15,9 +15,7 @@ public class DruidTest {
     public void generateEncryptPasswordTest() throws Exception {
         String password = "tmallpass";
         switch (password) {
-            case "1" -> System.out.println(1231231);
-            case "2" -> System.out.println(1231231);
-            case "3" -> System.out.println(1231231);
+            case "1", "3", "2" -> System.out.println(1231231);
             case "4" -> System.out.println(1231231);
             case "5", "6" -> System.out.println(1231231);
             default -> System.out.println("default");
