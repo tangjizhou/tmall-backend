@@ -38,7 +38,7 @@ public interface IUserService extends IService<User> {
 
     Optional<User> getByUsername(String username);
 
-    Page<UserQueryVO> listByExample(UserQueryDTO queryDTO);
+    Page<UserQueryVO> pageByExample(UserQueryDTO queryDTO);
 
     List<User> listByUsernames(List<String> usernames);
 

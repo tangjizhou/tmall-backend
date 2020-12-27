@@ -70,7 +70,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public Page<UserQueryVO> listByExample(UserQueryDTO queryDTO) {
+    public Page<UserQueryVO> pageByExample(UserQueryDTO queryDTO) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(StringUtils.isNotBlank(queryDTO.getUsername()), "username", queryDTO.getUsername());
         queryWrapper.like(StringUtils.isNotBlank(queryDTO.getRealName()), "real_name", queryDTO.getRealName());

@@ -33,7 +33,7 @@ public class UserController {
 
     @GetMapping("/list")
     public Page<UserQueryVO> queryByExample(UserQueryDTO queryDTO) {
-        return userService.listByExample(queryDTO);
+        return userService.pageByExample(queryDTO);
     }
 
 }

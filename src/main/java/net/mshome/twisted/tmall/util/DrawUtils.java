@@ -40,19 +40,19 @@ public final class DrawUtils {
         }
 
         public Point leftTop() {
-
+            return Point.of(0, 0);
         }
 
         public Point rightTop() {
-
+            return Point.of(0, 0);
         }
 
         public Point leftBottom() {
-
+            return Point.of(0, 0);
         }
 
         public Point rightBottom() {
-
+            return Point.of(0, 0);
         }
 
     }
@@ -132,7 +132,7 @@ public final class DrawUtils {
             ++index;
         }
 
-
+        return contour;
     }
 
     private static void calculateContourPoints(Edge lastEdge, Edge edge, Contour contour) {
@@ -145,7 +145,7 @@ public final class DrawUtils {
 
 
     public static boolean hasOverlapping() {
-
+        return false;
 
     }
 
@@ -164,7 +164,7 @@ public final class DrawUtils {
 
         l1.stream().map(Point::getX).sorted().collect(Collectors.toMap(Function.identity(), Function.identity(), (o1, o2) -> o1 > o2 ? o2 : o1));
 
-
+        return Collections.emptyList();
     }
 
 }
