@@ -45,7 +45,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public void register(UserAddDTO userAddDTO) {
         String username = userAddDTO.getUsername();
         String password = passwordMatcher.getPasswordService().encryptPassword(userAddDTO.getPassword());
-        int count = baseMapper.selectCount(new QueryWrapper<>(User.builder().username(username).build()));
+        int count = count(new QueryWrapper<>(User.builder().username(username).build()));
         Preconditions.checkArgument(count == 0, "用户%s已存在", username);
         User user = User.builder().username(username).password(password)
                 .address(userAddDTO.getAddress()).realName(userAddDTO.getRealName()).build();
@@ -53,11 +53,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public List<Role> listUserRoles(Long userId) {
+    public List<Role> listRolesByUserId(Long userId) {
         if (Objects.isNull(userId) || userId == 0) {
             return Collections.emptyList();
         }
-        return baseMapper.listUserRoles(userId);
+        return baseMapper.selectRolesByUserId(userId);
     }
 
     @Override

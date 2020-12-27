@@ -34,7 +34,7 @@ public interface IUserService extends IService<User> {
      * @param userId 用户id
      * @return 用户对角色
      */
-    List<Role> listUserRoles(Long userId);
+    List<Role> listRolesByUserId(Long userId);
 
     Optional<User> getByUsername(String username);
 

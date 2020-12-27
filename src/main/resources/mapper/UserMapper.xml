@@ -8,7 +8,7 @@
         where username = #{username}
     </update>
 
-    <select id="listUserRoles" resultType="net.mshome.twisted.tmall.entity.Role">
+    <select id="selectRolesByUserId" resultType="net.mshome.twisted.tmall.entity.Role">
         select *
         from role
         where id in (select role_id from user_role where user_id = #{userId})
