@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<recipe id="1" name="clean" path="/recipe/clean">
+    <header id="2" version="3"/>
+</recipe>
