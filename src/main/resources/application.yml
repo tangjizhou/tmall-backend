@@ -54,7 +54,3 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   type-handlers-package: net.mshome.twisted.tmall.aop.handler.mybatis
   mapper-locations: classpath:mapper/*Mapper.xml
-
-tmall:
-  sync:
-    tables: user
