@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ParamSet {
+public class ParamSet extends XmlNode {
 
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "param")

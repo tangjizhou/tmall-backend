@@ -1,7 +1,9 @@
 package net.mshome.twisted.tmall.recipe.model;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -12,6 +14,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Param extends XmlNode {
 
     @JacksonXmlProperty(isAttribute = true)
@@ -22,5 +26,9 @@ public class Param extends XmlNode {
     private Object max;
     @JacksonXmlProperty(isAttribute = true)
     private Object limit;
+
+    public String getSpec() {
+        return "this is a spec";
+    }
 
 }

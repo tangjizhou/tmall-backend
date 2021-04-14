@@ -12,7 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Header {
+public class Header extends XmlNode {
 
     @JacksonXmlProperty
     private Param ppId;

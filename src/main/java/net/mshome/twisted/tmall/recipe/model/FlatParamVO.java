@@ -1,7 +1,6 @@
 package net.mshome.twisted.tmall.recipe.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * flatted param vo
@@ -11,11 +10,14 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class FlatParamVO {
 
     private String name;
     private String path;
     private String value;
     private String spec;
-
+    private int pathDepth;
 }
