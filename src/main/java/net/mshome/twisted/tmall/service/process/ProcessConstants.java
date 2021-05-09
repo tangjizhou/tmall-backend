@@ -3,7 +3,7 @@ package net.mshome.twisted.tmall.service.process;
 /**
  * 流程通用变量名常量类
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/27
  */
 public class ProcessConstants {

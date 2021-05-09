@@ -14,7 +14,7 @@ import java.util.List;
  * Mapper 接口
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-26
  */
 @Repository

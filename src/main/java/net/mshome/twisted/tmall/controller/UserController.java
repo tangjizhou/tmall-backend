@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * 前端控制器
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-26
  */
 @RestController

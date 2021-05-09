@@ -6,7 +6,7 @@ import net.mshome.twisted.tmall.enumeration.ErrorCode;
 /**
  * 天猫系统异常，所有的异常应该继承该异常
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-18
  */
 public class TmallException extends RuntimeException {

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 枚举数据接口
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/1/5
  */
 @RestController

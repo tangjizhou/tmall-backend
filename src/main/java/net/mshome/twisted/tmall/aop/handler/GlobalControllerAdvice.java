@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * 天猫系统全局异常拦截
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-18
  */
 @Slf4j

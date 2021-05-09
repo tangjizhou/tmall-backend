@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.enums.IEnum;
 /**
  * 系统错误码
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/9/4
  */
 public enum ErrorCode implements IEnum<Integer> {

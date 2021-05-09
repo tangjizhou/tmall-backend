@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 /**
  * 用户字段校验器
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-15
  */
 public class UserFieldValidator implements ConstraintValidator<UsersField, String> {

@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 /**
  * 权限常量
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/7
  */
 @UtilityClass

@@ -10,7 +10,7 @@ import java.util.Optional;
 /**
  * 自定义redis key的序列化，分环境
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/9/15
  */
 @Component

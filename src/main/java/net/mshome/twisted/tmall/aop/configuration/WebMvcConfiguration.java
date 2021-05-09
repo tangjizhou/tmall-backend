@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * 配置类，配置自定义返回值处理器
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/9/4
  */
 @Configuration

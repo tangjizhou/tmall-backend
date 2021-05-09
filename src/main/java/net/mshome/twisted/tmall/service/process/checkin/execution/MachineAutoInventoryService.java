@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 /**
  * 自动核对服务
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/6/4
  */
 @Service

@@ -8,7 +8,7 @@ import lombok.Setter;
 /**
  * 流程状态交付字段
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/8/30
  */
 @Getter

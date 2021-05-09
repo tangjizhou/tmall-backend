@@ -3,7 +3,7 @@ package net.mshome.twisted.tmall.exception;
 /**
  * 流程配置异常
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/27
  */
 public class ProcessConfigureException extends RuntimeException {

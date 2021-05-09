@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 /**
  * 变量定义常量类
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/27
  */
 @UtilityClass

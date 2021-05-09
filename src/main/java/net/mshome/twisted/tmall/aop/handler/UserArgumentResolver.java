@@ -14,7 +14,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 /**
  * 自定义用户参数注入
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/9/16
  */
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {

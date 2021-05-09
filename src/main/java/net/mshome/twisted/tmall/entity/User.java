@@ -10,7 +10,7 @@ import java.io.Serializable;
  * 用户数据库映射类
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-26
  */
 @Data

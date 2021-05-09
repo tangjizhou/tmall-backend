@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  */
 @EnableTransactionManagement
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)

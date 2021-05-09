@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 产品数据导入
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/10/31
  */
 @Slf4j

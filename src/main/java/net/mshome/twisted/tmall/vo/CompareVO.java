@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.recipe.model;
+package net.mshome.twisted.tmall.vo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * compare result vo
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2021/4/13
  */
 @Getter

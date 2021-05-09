@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 /**
  * 产品实体类
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-26
  */
 @Data

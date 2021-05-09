@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * Mapper 接口
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020-06-04
  */
 public interface CheckInMapper extends BaseMapper<CheckIn> {

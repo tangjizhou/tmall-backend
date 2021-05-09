@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 /**
  * session变量常量类
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/8/28
  */
 @UtilityClass

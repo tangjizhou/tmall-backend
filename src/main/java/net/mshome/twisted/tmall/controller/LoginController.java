@@ -34,7 +34,7 @@ import java.util.Set;
 /**
  * 登入登出
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/1/4
  */
 @Validated

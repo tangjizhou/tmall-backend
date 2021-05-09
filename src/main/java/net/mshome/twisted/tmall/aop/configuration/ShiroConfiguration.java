@@ -26,7 +26,7 @@ import java.util.Set;
 /**
  * shiro配置
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/1/3
  */
 @Configuration

@@ -6,7 +6,7 @@ import net.mshome.twisted.tmall.enumeration.DataState;
 /**
  * 新增用户参数
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-18
  */
 @EqualsAndHashCode(callSuper = true)

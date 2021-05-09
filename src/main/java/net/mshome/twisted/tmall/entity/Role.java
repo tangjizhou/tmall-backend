@@ -11,7 +11,7 @@ import java.io.Serializable;
  * 用户角色
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-28
  */
 @Data

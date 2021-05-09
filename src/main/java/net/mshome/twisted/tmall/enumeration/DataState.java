@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * 数据状态
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/1/3
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

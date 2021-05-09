@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
  *
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020-06-04
  */
 @Data

@@ -1,31 +1,36 @@
 package net.mshome.twisted.tmall.entity;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.xml.bind.annotation.*;
-
 /**
- * 配方
+ * recipe
  *
- * @author tangjizhouchn@foxmail.com
- * @since 2021/3/23
+ * @author tangjizhou
+ * @since 2021/4/13
  */
 @Getter
 @Setter
-@XmlRootElement
-@XmlAccessorType(value = XmlAccessType.FIELD)
-public class Recipe {
+@JacksonXmlRootElement
+public class Recipe extends XmlNode implements Cloneable {
 
-    @XmlAttribute
-    private String id;
-    @XmlAttribute
-    private String name;
-    @XmlAttribute
-    private String path;
+    @JacksonXmlProperty
+    private Param ppId;
+    @JacksonXmlProperty
+    private Param mdln;
+    @JacksonXmlProperty
+    private Param softv;
 
-    @XmlElement
-    private Header header;
+    @JacksonXmlProperty
+    private Body body;
 
+    @Override
+    public Recipe clone() {
+        return JSON.parseObject(JSON.toJSONString(this), Recipe.class);
+
+    }
 
 }

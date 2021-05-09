@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 /**
  * 商品入库参数
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/8/20
  */
 @Data

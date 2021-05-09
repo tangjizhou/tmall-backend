@@ -1,7 +1,7 @@
 package net.mshome.twisted.tmall.mapper;
 
-import net.mshome.twisted.tmall.entity.Product;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import net.mshome.twisted.tmall.entity.Product;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  *  Mapper 接口
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-26
  */
 @Repository

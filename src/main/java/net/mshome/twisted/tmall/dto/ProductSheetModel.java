@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 /**
  * 产品excel导入
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/10/31
  */
 @Data

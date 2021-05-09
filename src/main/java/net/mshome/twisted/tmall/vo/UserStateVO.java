@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * 用户状态前台展示字段
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/9/21
  */
 @Data

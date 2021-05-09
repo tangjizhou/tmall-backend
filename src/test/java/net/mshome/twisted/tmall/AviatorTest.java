@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 公式测试
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/9/15
  */
 public class AviatorTest {

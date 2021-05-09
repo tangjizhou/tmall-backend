@@ -1,8 +1,13 @@
-package net.mshome.twisted.tmall.recipe.compare;
+package net.mshome.twisted.tmall.service.compare;
 
 import com.google.common.collect.Sets;
-import net.mshome.twisted.tmall.recipe.model.*;
+import net.mshome.twisted.tmall.entity.Param;
+import net.mshome.twisted.tmall.entity.Recipe;
+import net.mshome.twisted.tmall.entity.XmlNode;
 import net.mshome.twisted.tmall.util.EntityUtils;
+import net.mshome.twisted.tmall.vo.CompareVO;
+import net.mshome.twisted.tmall.vo.FlatParamVO;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.beans.BeanInfo;
@@ -12,46 +17,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * TODO
+ * 对比服务
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2021/4/13
  */
+@Service
 public class RecipeCompareService {
-
-    public static void main(String[] args) throws Exception {
-        Recipe recipe = new Recipe();
-        Header header = new Header();
-        Param param1 = new Param("param1", 2, 3, 4);
-        param1.setName("param1");
-        Param param2 = new Param("param2", 2, 3, 4);
-        param2.setName("param2");
-        Param param3 = new Param("param3", 2, 3, 4);
-        param3.setName("param3");
-
-        header.setMdln(param1);
-        header.setPpId(param2);
-        header.setSoftv(param3);
-
-        Body body = new Body();
-        body.setName("body");
-        body.setParams(List.of(param1, param2, param3));
-        ParamSet paramSet1 = new ParamSet();
-        paramSet1.setName("step1");
-        paramSet1.setParams(List.of(param1, param2));
-        ParamSet paramSet2 = new ParamSet();
-        paramSet2.setName("pointTable1");
-        paramSet2.setParams(List.of(param1, param2));
-        paramSet1.setParamSets(List.of(paramSet2));
-        body.setParamSets(List.of(paramSet1));
-        recipe.setHeader(header);
-        recipe.setBody(body);
-
-
-        Recipe recipe2 = recipe.clone();
-        recipe2.setName("recipe2");
-        new RecipeCompareService().compare(List.of(recipe, recipe2)).forEach(System.out::println);
-    }
 
     public List<CompareVO> compare(List<Recipe> recipes) {
         List<List<FlatParamVO>> recipesParams = recipes.parallelStream().map(this::flatRecipe).collect(Collectors.toList());

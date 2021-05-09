@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 修改密码请求参数
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-25
  */
 @Data

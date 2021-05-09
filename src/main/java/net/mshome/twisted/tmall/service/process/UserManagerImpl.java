@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * 自定义用户服务
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/28
  */
 public class UserManagerImpl extends AbstractManager implements UserEntityManager {

@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 /**
  * 头
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2021/3/23
  */
 @Getter

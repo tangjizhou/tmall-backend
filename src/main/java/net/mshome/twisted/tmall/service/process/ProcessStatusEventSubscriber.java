@@ -6,7 +6,7 @@ import net.mshome.twisted.tmall.service.process.model.ProcessStatusEventBroadcas
 /**
  * 流程状态同步
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/8/30
  */
 public interface ProcessStatusEventSubscriber {

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * performance test
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/10/6
  */
 public class LambdaTest {

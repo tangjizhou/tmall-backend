@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 测试restTemplate
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/6/26
  */
 @RunWith(SpringRunner.class)

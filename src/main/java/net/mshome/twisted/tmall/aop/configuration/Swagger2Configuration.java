@@ -10,7 +10,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-18
  * @description swagger2 配置
  */

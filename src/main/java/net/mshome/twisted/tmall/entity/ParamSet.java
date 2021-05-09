@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.recipe.model;
+package net.mshome.twisted.tmall.entity;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -8,21 +8,21 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * body
+ * param set
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2021/4/13
  */
 @Getter
 @Setter
-public class Body extends XmlNode {
+public class ParamSet extends XmlNode {
 
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "param")
     private List<Param> params;
 
     @JacksonXmlElementWrapper(useWrapping = false)
-    @JacksonXmlProperty(localName = "param")
+    @JacksonXmlProperty(localName = "paramSet")
     private List<ParamSet> paramSets;
 
 }

@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * TODO
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/29
  */
 public class GroupManagerImpl extends AbstractManager implements GroupEntityManager {

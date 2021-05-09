@@ -8,7 +8,7 @@ import java.util.Collections;
 /**
  * 分页查询参数
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/3/7
  */
 @Data

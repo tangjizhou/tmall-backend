@@ -11,7 +11,7 @@ import static java.lang.annotation.ElementType.METHOD;
 /**
  * 权限控制注解，根据权限给字段打马赛克
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/3/2
  */
 @Documented

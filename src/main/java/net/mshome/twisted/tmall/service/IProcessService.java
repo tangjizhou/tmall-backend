@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 流程服务类
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/8/20
  */
 public interface IProcessService {

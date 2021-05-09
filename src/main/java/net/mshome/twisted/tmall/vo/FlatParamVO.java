@@ -1,11 +1,11 @@
-package net.mshome.twisted.tmall.recipe.model;
+package net.mshome.twisted.tmall.vo;
 
 import lombok.*;
 
 /**
  * flatted param vo
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2021/4/13
  */
 @Getter

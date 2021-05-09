@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Activiti流程配置
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/28
  */
 @Configuration

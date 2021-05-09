@@ -13,7 +13,7 @@ import java.util.Set;
  * 权限 Mapper 接口
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-28
  */
 public interface PermissionMapper extends BaseMapper<Permission> {

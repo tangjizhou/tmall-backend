@@ -35,7 +35,7 @@ import java.util.UUID;
 /**
  * 系统配置
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/10/16
  */
 @Configuration

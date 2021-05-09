@@ -24,7 +24,7 @@ import java.util.Set;
 /**
  * 用户验证
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/1/3
  */
 public class UserRealm extends AuthorizingRealm {

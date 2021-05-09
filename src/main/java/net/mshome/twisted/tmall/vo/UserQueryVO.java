@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 /**
  * 用户数据前台展示
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/9/21
  */
 @Data

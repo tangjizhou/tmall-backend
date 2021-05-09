@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * druid密码加密
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019/9/1
  */
 public class DruidTest {

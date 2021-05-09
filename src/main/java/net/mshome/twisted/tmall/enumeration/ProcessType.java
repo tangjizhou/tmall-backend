@@ -3,7 +3,7 @@ package net.mshome.twisted.tmall.enumeration;
 /**
  * 流程类型
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/8/20
  */
 public enum ProcessType {

@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.recipe.model;
+package net.mshome.twisted.tmall.entity;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Setter;
 /**
  * param
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2021/4/13
  */
 @Getter

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 /**
  * 实体类工具类
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/3/1
  */
 public class EntityUtils {

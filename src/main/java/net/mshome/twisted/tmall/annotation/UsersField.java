@@ -11,7 +11,7 @@ import static java.lang.annotation.ElementType.*;
 /**
  * 用户字段校验注解
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-15
  */
 

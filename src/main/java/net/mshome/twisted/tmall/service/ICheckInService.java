@@ -9,7 +9,7 @@ import net.mshome.twisted.tmall.entity.CheckIn;
  * 服务类
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020-06-04
  */
 public interface ICheckInService extends IService<CheckIn> {

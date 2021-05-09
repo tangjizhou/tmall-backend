@@ -18,7 +18,7 @@ import java.util.List;
  * 包装返回值,针对有mapping注解的方法返回的json数据包装
  * 修改处理返回结果handler链表，在中间添加自定义handler
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/9/4
  */
 @Component

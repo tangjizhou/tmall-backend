@@ -21,7 +21,7 @@ import java.util.Collections;
 /**
  * 商品入库服务
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020-06-04
  */
 @Service

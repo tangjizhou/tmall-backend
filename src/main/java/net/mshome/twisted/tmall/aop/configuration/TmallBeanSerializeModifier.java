@@ -22,7 +22,7 @@ import java.util.*;
 /**
  * 自定义序列化，结合shiro加入权限控制
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/3/2
  */
 public class TmallBeanSerializeModifier extends BeanSerializerModifier {

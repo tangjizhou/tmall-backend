@@ -10,7 +10,7 @@ import java.util.List;
  * 用户角色 服务类
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-28
  */
 public interface IRoleService extends IService<Role> {

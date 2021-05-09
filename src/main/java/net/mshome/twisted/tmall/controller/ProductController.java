@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  * 前端控制器
  * </p>
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2019-08-26
  */
 @Slf4j

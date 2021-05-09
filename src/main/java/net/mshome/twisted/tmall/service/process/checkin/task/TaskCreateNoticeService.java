@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 任务生成，通知审批人服务
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/3/27
  */
 @Service

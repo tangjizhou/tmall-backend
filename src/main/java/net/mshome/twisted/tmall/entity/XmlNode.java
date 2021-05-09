@@ -1,4 +1,4 @@
-package net.mshome.twisted.tmall.recipe.model;
+package net.mshome.twisted.tmall.entity;
 
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -8,7 +8,7 @@ import lombok.Setter;
 /**
  * xml node
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2021/4/13
  */
 @Getter

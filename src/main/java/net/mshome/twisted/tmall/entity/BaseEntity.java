@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 /**
  * 数据库实体类的父类，必需字段
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/9/6
  */
 @Data

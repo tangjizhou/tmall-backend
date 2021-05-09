@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * 登陆参数
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/4/6
  */
 @Data

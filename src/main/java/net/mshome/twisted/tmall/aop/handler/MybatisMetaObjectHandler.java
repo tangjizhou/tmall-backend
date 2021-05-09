@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 /**
  * 公共字段填充
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/8/26
  */
 public class MybatisMetaObjectHandler implements MetaObjectHandler {

@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * 前台展示的用户信息
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2020/1/4
  */
 @Data

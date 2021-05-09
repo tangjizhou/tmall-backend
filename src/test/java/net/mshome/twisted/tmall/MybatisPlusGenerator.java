@@ -34,7 +34,7 @@ public class MybatisPlusGenerator {
         autoGenerator.setStrategy(strategyConfig);
 
         GlobalConfig globalConfig = new GlobalConfig();
-        globalConfig.setAuthor("tangjizhouchn@foxmail.com");
+        globalConfig.setAuthor("tangjizhou");
         globalConfig.setFileOverride(true);
         globalConfig.setBaseResultMap(false);
         globalConfig.setOutputDir("./src/main/java");

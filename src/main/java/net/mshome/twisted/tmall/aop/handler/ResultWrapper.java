@@ -9,7 +9,7 @@ import net.mshome.twisted.tmall.enumeration.ErrorCode;
 /**
  * 返回给前台的消息包装类
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-18
  */
 @Data

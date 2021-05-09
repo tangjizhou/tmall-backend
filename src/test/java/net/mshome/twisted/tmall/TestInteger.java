@@ -3,7 +3,7 @@ package net.mshome.twisted.tmall;
 /**
  * TODO
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/7/23
  */
 public class TestInteger {

@@ -32,7 +32,7 @@ import java.util.Properties;
 /**
  * 自定义mybatis插件，实现输出实际执行sql语句
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019-08-18
  */
 @Intercepts({

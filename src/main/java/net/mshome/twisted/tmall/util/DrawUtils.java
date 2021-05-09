@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * 画图工具
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/12/13
  */
 public final class DrawUtils {

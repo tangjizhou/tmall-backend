@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * 迭代时修改 测试
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/11/18
  */
 public class IteratorModifyTest {

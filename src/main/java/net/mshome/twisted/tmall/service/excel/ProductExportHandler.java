@@ -7,7 +7,7 @@ import com.alibaba.excel.write.metadata.holder.WriteWorkbookHolder;
 /**
  * TODO
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @date 2019/10/31
  */
 public class ProductExportHandler implements SheetWriteHandler {

@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * TODO
  *
- * @author tangjizhouchn@foxmail.com
+ * @author tangjizhou
  * @since 2020/8/22
  */
 public class EntityMD5Test {
