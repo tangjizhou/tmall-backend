@@ -11,7 +11,7 @@
     <properties>
         <springboot.version>2.3.3.RELEASE</springboot.version>
         <java.version>14</java.version>
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>2.10.0</swagger.version>
         <dockerfile.maven.version>1.4.0</dockerfile.maven.version>
     </properties>
 
